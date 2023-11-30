@@ -10,109 +10,155 @@ import {
 import Profiles from "../../assets/Profiles";
 import Icons from "../../assets/Icons";
 import { useState } from "react";
+import { Link, Stack } from "expo-router";
+
 //import supabase from "./env";
 
 const { height: windowHeight, width: windowWidth } = Dimensions.get("window");
 //import { Icons, Themes } from "../../assets/Themes";
 
-const renderComment = ({ item }) => {
-  return (
-    <Comment
-      id={item.id}
-      eventName={item.eventName}
-      userName={item.userName}
-      description={item.description}
-      image={item.image}
-    />
-  );
-};
-
 const Body = () => {
   const [liked, isLiked] = useState(false);
 
-  useEffect(() => {
-    // Fetch data on initial load
-    const fetchData = async () => {
-      const response = await supabase.from("Kith&Kin").select("*");
-      //print data
-      setData(response.data);
-    };
-    fetchData();
-  }, []);
-
   return (
-    <SafeAreaView style={styles.container}>
-      <FlatList
-        data={data}
-        renderItem={renderComment}
-        keyExtractor={(item) => item.text}
-        style={styles.posts}
-      />
-
-      <View style={styles.main}>
+    <View style={styles.main}>
+      <Link href="/description">
         <View style={styles.box}>
-          <View>
-            <Text>{eventName}</Text>
-            <Text>{userName}</Text>
-            <Text> {description}</Text>
+          <View style={styles.halfBox}>
+            <Text>Moms Who Walk!</Text>
+            <Text>TayTay23</Text>
+            <Text style={styles.description}>
+              {" "}
+              Join us for a day of strolling, where we celebrate motherhood one
+              step at a time! 👟🌼{""}
+            </Text>
           </View>
           <View>
             <Image source={Icons.sun} style={styles.eventsImage} />
           </View>
         </View>
+      </Link>
+
+      <View style={styles.boxTwo}>
+        <View style={styles.halfBox2}>
+          <Text>Monthly Coffee & Chat</Text>
+          <Text>rose_redxx</Text>
+          <Text style={styles.description}>
+            You’re not alone. Bi-weekly grief and counseling workshop hosted by
+            mom/therapist Katy
+          </Text>
+        </View>
+        <View>
+          <Image source={Icons.sun} style={styles.eventsImage2} />
+        </View>
       </View>
-    </SafeAreaView>
+
+      <View style={styles.boxTwo}>
+        <View style={styles.halfBox2}>
+          <Text>Monthly Coffee & Chat</Text>
+          <Text>rose_redxx</Text>
+          <Text style={styles.description}>
+            Parenting is a journey best shared! Come by for coffee at the Old
+            Brew House!
+          </Text>
+        </View>
+        <View>
+          <Image source={Icons.sun} style={styles.eventsImage2} />
+        </View>
+      </View>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   main: {
     //width: windowWidth * 0.4,
-    flex: 3,
+    flex: 5,
     width: "100%",
     //height: "100%",
 
-    justifyContent: "space-between",
+    justifyContent: "space-evenly",
     alignItems: "center",
     //paddingTop: windowHeight * 0.1,
     //width: "70%",
+    borderWidth: "2%",
+    borderColor: "blue",
   },
 
   eventsImage: {
-    height: "40%",
+    height: "100%",
     aspectRatio: 1,
     width: "15%",
-    borderWidth: "2%",
-    borderColor: "pink",
+    // borderWidth: "2%",
+    // borderColor: "pink",
+  },
+
+  eventsImage2: {
+    height: "100%",
+    aspectRatio: 1,
+    width: "15%",
+    // borderWidth: "2%",
+    // borderColor: "pink",
   },
 
   box: {
-    width: "80%",
+    borderWidth: "2%",
+    borderColor: "pink",
+    width: "90%",
+    height: "25%",
     margin: 2,
     padding: 2,
     flexDirection: "row",
     justifyContent: "space-between",
     backgroundColor: "white",
-  },
-  image: {
-    maxWidth: windowWidth * 0.8,
-    alignItems: "center",
-    aspectRatio: 1,
-    //flexWrap: "wrap",
-    flex: 1,
+    paddingTop: 10,
+    paddingBottom: 10,
   },
 
-  imageStyle: {
-    borderRadius: 8,
-    //height: "100%",
-    width: "100%",
-  },
-
-  name: {
+  boxTwo: {
+    //paddingTop: 50,
+    width: "90%",
+    height: "25%",
+    margin: 2,
+    padding: 2,
     flexDirection: "row",
-    justifyContent: "start",
-    left: windowWidth * 0.001,
+    justifyContent: "space-between",
+    backgroundColor: "white",
+    paddingTop: 10,
+    paddingBottom: 10,
   },
+
+  halfBox: {
+    width: "70%",
+  },
+
+  halfBox2: {
+    width: "70%",
+  },
+
+  description: {
+    paddingTop: 5,
+  },
+
+  // image: {
+  //   maxWidth: windowWidth * 0.8,
+  //   alignItems: "center",
+  //   aspectRatio: 1,
+  //   //flexWrap: "wrap",
+  //   flex: 1,
+  // // },
+
+  // imageStyle: {
+  //   borderRadius: 8,
+  //   //height: "100%",
+  //   width: "100%",
+  // },
+
+  // name: {
+  //   flexDirection: "row",
+  //   justifyContent: "start",
+  //   left: windowWidth * 0.001,
+  // },
 
   captionHeart: {
     flexDirection: "row",
@@ -221,6 +267,7 @@ const styles = StyleSheet.create({
     /*flex: 1,*/
     //width: "20%",  contianer size for the bottom line, height 100%
     //height: "100%",
+
     padding: 10,
     right: 10,
     bottom: 10,
@@ -234,8 +281,9 @@ const styles = StyleSheet.create({
   },
 });
 
-{
-  /*<ImageBackground
+/*
+  
+  <ImageBackground
         source={Profiles.landay.image}
         style={styles.image}
         imageStyle={styles.imageStyle}
@@ -259,7 +307,6 @@ const styles = StyleSheet.create({
       </ImageBackground>
 
 
-
   return(
       <View style={styles.container}>
         <View style={styles.description}>
@@ -275,5 +322,60 @@ const styles = StyleSheet.create({
     </View>
   );
 };
- */
-}
+
+
+*/
+
+export default Body;
+
+/*
+const renderComment = ({ item }) => {
+  return (
+    <Comment
+      id={item.id}
+      eventName={item.eventName}
+      userName={item.userName}
+      description={item.description}
+      image={item.image}
+    />
+  );
+};
+
+const Body = () => {
+  const [liked, isLiked] = useState(false);
+
+  useEffect(() => {
+    // Fetch data on initial load
+    const fetchData = async () => {
+      const response = await supabase.from("Kith&Kin").select("*");
+      //print data
+      setData(response.data);
+    };
+    fetchData();
+  }, []);
+
+  return (
+    <SafeAreaView style={styles.container}>
+      <FlatList
+        data={data}
+        renderItem={renderComment}
+        keyExtractor={(item) => item.text}
+        style={styles.posts}
+      />
+
+      <View style={styles.main}>
+        <View style={styles.box}>
+          <View>
+            <Text>{eventName}</Text>
+            <Text>{userName}</Text>
+            <Text> {description}</Text>
+          </View>
+          <View>
+            <Image source={Icons.sun} style={styles.eventsImage} />
+          </View>
+        </View>
+      </View>
+    </SafeAreaView>
+  );
+};
+*/

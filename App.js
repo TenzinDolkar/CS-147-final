@@ -20,7 +20,6 @@ SplashScreen.preventAutoHideAsync();
  */
 function HomeScreen() {
   /* TODO: insert your code here */
-
   return (
     <View style={styles.container}>
       <Header />
@@ -72,3 +71,56 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 });
+
+/*
+import React from "react";
+import { Text, View, StyleSheet } from "react-native";
+import { useStyles, createStyles } from "styles";
+
+export interface TitleBarProps {
+  testID?: string;
+}
+
+export function TitleBar(props: TitleBarProps) {
+  const { styles } = useStyles(stylesheet);
+
+  return (
+    <View style={styles.root} testID={props.testID}>
+      <View style={styles.titleBar} testID="14:5" />
+      <Text style={styles.kithKin} testID="22:47">
+        {`kith&kin`}
+      </Text>
+    </View>
+  );
+}
+
+const stylesheet = createStyles((theme) => ({
+  root: {
+    width: 393,
+    height: 92,
+    flexShrink: 0,
+  },
+  titleBar: {
+    width: 393,
+    height: 92,
+    flexShrink: 0,
+    backgroundColor: theme.colors.fuschia60,
+  },
+  kithKin: {
+    width: 201,
+    height: 85,
+    flexDirection: "column",
+    justifyContent: "center",
+    flexShrink: 0,
+    color: "rgba(56, 127, 88, 1)",
+    textAlign: "center",
+    fontFamily: "Corben",
+    fontSize: 36,
+    fontStyle: "normal",
+    fontWeight: "400",
+  },
+}));
+
+
+
+*/
