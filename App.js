@@ -5,12 +5,14 @@ import { StyleSheet, Text, View, StatusBar } from "react-native";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import { Themes } from "./assets/Themes";
 import Header from "./app/components/Header";
 import Body from "./app/components/Body";
 import Footer from "./app/components/Footer";
+import EventBody from "./app/components/EventBody";
 import { GluestackUIProvider} from "@gluestack-ui/themed"
 import { config } from "@gluestack-ui/config" // Optional if you want to use default theme
 
@@ -24,12 +26,37 @@ function HomeScreen() {
   /* TODO: insert your code here */
   return (
     <View style={styles.container}>
-      <Header />
-      <Body />
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen
+          name="Home"
+          component={Home}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen name="EventDetails" component={EventDetails} options={{title:"Event Details"}} />
+      </Stack.Navigator>
     </View>
   );
 }
 
+function Home({navigation}) {
+  return (
+    <View style={styles.container}>
+    <Header />
+    <Body navigation={navigation} />
+    </View>
+  );
+}
+
+function EventDetails() {
+  return (
+    <View style={styles.container}>
+    <Header />
+    <EventBody />
+    </View>
+  );
+}
+
+const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 export default function App() {
@@ -73,7 +100,11 @@ export default function App() {
             headerShown: false,
           }}
         >
-          <Tab.Screen name="Home" component={HomeScreen} />
+          <Tab.Screen name="HomeScreen" component={HomeScreen} />
+          {/* <Tab.Screen name="Home" component={ChatScreen} />
+          <Tab.Screen name="Home" component={BoardScreen} />
+          <Tab.Screen name="Home" component={ConnectScreen} />
+          <Tab.Screen name="Home" component={AccountScreen} /> */}
         </Tab.Navigator>
       </NavigationContainer>
     </View>
@@ -89,55 +120,4 @@ const styles = StyleSheet.create({
   },
 });
 
-/*
-import React from "react";
-import { Text, View, StyleSheet } from "react-native";
-import { useStyles, createStyles } from "styles";
 
-export interface TitleBarProps {
-  testID?: string;
-}
-
-export function TitleBar(props: TitleBarProps) {
-  const { styles } = useStyles(stylesheet);
-
-  return (
-    <View style={styles.root} testID={props.testID}>
-      <View style={styles.titleBar} testID="14:5" />
-      <Text style={styles.kithKin} testID="22:47">
-        {`kith&kin`}
-      </Text>
-    </View>
-  );
-}
-
-const stylesheet = createStyles((theme) => ({
-  root: {
-    width: 393,
-    height: 92,
-    flexShrink: 0,
-  },
-  titleBar: {
-    width: 393,
-    height: 92,
-    flexShrink: 0,
-    backgroundColor: theme.colors.fuschia60,
-  },
-  kithKin: {
-    width: 201,
-    height: 85,
-    flexDirection: "column",
-    justifyContent: "center",
-    flexShrink: 0,
-    color: "rgba(56, 127, 88, 1)",
-    textAlign: "center",
-    fontFamily: "Corben",
-    fontSize: 36,
-    fontStyle: "normal",
-    fontWeight: "400",
-  },
-}));
-
-
-
-*/

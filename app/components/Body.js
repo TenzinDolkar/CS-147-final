@@ -3,7 +3,7 @@ import { GluestackUIProvider, Input, InputField, InputSlot, InputIcon, SearchIco
 import { Select, SelectTrigger, SelectInput, SelectPortal, SelectBackdrop, SelectContent, SelectItem, size, variant, SelectIcon, ChevronDownIcon, SelectDragIndicatorWrapper, SelectDragIndicator } from '@gluestack-ui/themed';
 // import { GluestackUIProvider, Button, ButtonText } from "@gluestack-ui/themed";
 import { config } from "@gluestack-ui/config";
-import { View, StyleSheet, Text, ImageBackground, Image, Pressable, Dimensions } from "react-native";
+import { View, StyleSheet, Text, ImageBackground, Image, Pressable, Dimensions, TouchableOpacity } from "react-native";
 import Profiles from "../../assets/Profiles";
 import Icons from "../../assets/Icons";
 import { useState } from "react";
@@ -21,7 +21,7 @@ const GREEN = "#387F58";
 const FUSCHIA = "#E45B74";
 //import { Icons, Themes } from "../../assets/Themes";
 
-const Body = () => {
+const Body = ({navigation}) => {
   const [value, setValue] = React.useState('');
   let selectIconSize = '';
   const [liked, isLiked] = useState(false);
@@ -76,8 +76,8 @@ const Body = () => {
 
 
       
-
-      <View style={styles.box}>
+      <TouchableOpacity onPress={() => navigation.navigate("EventDetails")} style={styles.box}>
+      {/* <View style={styles.box}> */}
         <View style={styles.halfBox}>
           <View style={styles.eventHeader}>
             <Text style={styles.eventTitle}>Moms Who Walk!</Text>
@@ -91,7 +91,8 @@ const Body = () => {
         <View>
           <Image source={Icons.sun} style={styles.eventsImage} />
         </View>
-      </View>
+      {/* </View> */}
+      </TouchableOpacity>
 
 
       <View style={styles.box}>
@@ -128,6 +129,7 @@ const Body = () => {
     </View>
   </GluestackUIProvider>;
 };
+
 const styles = StyleSheet.create({
   main: {
     //width: windowWidth * 0.4,
