@@ -1,6 +1,7 @@
 import React from 'react';
-import { GluestackUIProvider, Image } from '@gluestack-ui/themed';
+import { GluestackUIProvider, Image, Button, ButtonText, ButtonIcon, set } from '@gluestack-ui/themed';
 import { Select, SelectTrigger, SelectInput, SelectPortal, SelectBackdrop, SelectContent, SelectItem, size, variant, SelectIcon, ChevronDownIcon, SelectDragIndicatorWrapper, SelectDragIndicator } from '@gluestack-ui/themed';
+import { AlertDialog, AlertDialogBackdrop, AlertDialogContent, AlertDialogHeader, AlertDialogCloseButton, AlertDialogFooter, AlertDialogBody, Heading, Icon, CloseIcon, ButtonGroup } from '@gluestack-ui/themed';
 // import { GluestackUIProvider, Button, ButtonText } from "@gluestack-ui/themed";
 import { config } from "@gluestack-ui/config";
 import { View, StyleSheet, Text, ImageBackground, Pressable, Dimensions } from "react-native";
@@ -20,7 +21,10 @@ const PINK = "#FBC6D0";
 const GREEN = "#387F58";
 const FUSCHIA = "#E45B74";
 
-const EventBody = () => {
+const EventBody = ({navigation}) => {
+    const [showAlertDialog, setShowAlertDialog] = React.useState(false)
+    const [showSuccess, setShowSuccess] = React.useState(false)
+    const [hasRSVPed, setHasRSVPed] = React.useState(false)
 
     return (
         <GluestackUIProvider config={config}>
@@ -28,23 +32,117 @@ const EventBody = () => {
             <View style={styles.eventSummaryFrame}>   
                 <Image
                 size="md" borderRadius="$none" 
-                source={{
-                    uri: 'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-                }}
+                source={require("../../assets/Events/walks.png")}
                 style={styles.eventImage}
                 />
                 <View style={styles.eventSummary}>
-                    <Text style={styles.eventTitle}>Title</Text>
-                    <Text style={styles.eventBody}>Date</Text>
-                    <Text style={styles.eventBody}>Location</Text>
+                    <Text style={styles.eventTitle}>Moms Who Walk!</Text>
+                    <Text style={styles.eventBody}>Creator: TayTay23</Text>
+                    <Text style={styles.eventBody}>Date: 11/11/23 @ 2:00PM</Text>
+                    <Text style={styles.eventBody}>Location: Willow Park</Text>
                 </View> 
       
             </View>
             <View style={styles.eventDescription}>
                 <Text style={styles.eventTitle}>Description</Text>
-                <Text style={styles.eventBody}>Lorem ipsum upset etc</Text>
+                <Text style={styles.eventBody}>Join us at beautiful Willow Park next Saturday for our Moms Who Walk event, located in the heart of our vibrant community. This empowering gathering is perfect for mothers of all ages and stages, where you can enjoy a refreshing walk, exchange parenting tips, and connect with other moms who understand the journey of motherhood. We'll provide a welcoming atmosphere, complete with water stations and shaded rest areas.
+ 
+                {"\n"}Whether you're a seasoned mom or a newbie, come take a step towards fitness and friendship at "Moms Who Walk" – because the journey of motherhood is better when shared!</Text>
+            </View>
+            <View style={styles.buttonsBar}>
+                <Button action="secondary" size="md" borderRadius="$none" isDisabled={hasRSVPed ? true : false} onPress={() => setShowAlertDialog(true)} style={styles.button}>
+                    <ButtonText color={GREEN}>RSVP</ButtonText>
+                </Button>
+                <Button action="secondary" size="md" borderRadius="$none" style={styles.button}>
+                    <ButtonText color={GREEN}>...</ButtonText>
+                </Button>
             </View>
         </View>
+
+        {/* CONFIRM PAGE */}
+        <AlertDialog
+            isOpen={showAlertDialog}
+            onClose={() => {
+            setShowAlertDialog(false)
+            }}
+        >
+            <AlertDialogBackdrop />
+            <AlertDialogContent>
+            <AlertDialogHeader>
+                <Heading size="lg">RSVP</Heading>
+                <AlertDialogCloseButton>
+                <Icon as={CloseIcon} />
+                </AlertDialogCloseButton>
+            </AlertDialogHeader>
+            <AlertDialogBody>
+                <Text size="sm">
+                Are you sure you want to RSVP to this event and confirm your attendance?
+                </Text>
+            </AlertDialogBody>
+            <AlertDialogFooter>
+                <ButtonGroup space="lg">
+                <Button
+                    variant="outline"
+                    action="secondary"
+                    onPress={() => {
+                    setShowAlertDialog(false)
+                    }}
+                >
+                    <ButtonText>Cancel</ButtonText>
+                </Button>
+                <Button
+                    bg={GREEN}
+                    action="primary"
+                    onPress={() => {
+                    setShowAlertDialog(false);
+                    setShowSuccess(true);
+                    setHasRSVPed(true);
+                    }}
+                >
+                    <ButtonText>Confirm</ButtonText>
+                </Button>
+                </ButtonGroup>
+            </AlertDialogFooter>
+            </AlertDialogContent>
+        </AlertDialog>
+
+        {/* SUCCESS PAGE */}
+        <AlertDialog
+            isOpen={showSuccess}
+            onClose={() => {
+            setShowSuccess(false)
+            }}
+        >
+            <AlertDialogBackdrop />
+            <AlertDialogContent>
+            <AlertDialogHeader>
+                <Heading size="lg">You're all set!</Heading>
+                <AlertDialogCloseButton>
+                <Icon as={CloseIcon} />
+                </AlertDialogCloseButton>
+            </AlertDialogHeader>
+            <AlertDialogBody>
+                <Text size="sm">
+                RSVP confirmed! We'll see you at the event.
+                </Text>
+            </AlertDialogBody>
+            <AlertDialogFooter>
+                <ButtonGroup space="lg">
+                <Button
+                    variant="outline"
+                    action="positive"
+                    onPress={() => {
+                    setShowSuccess(false);
+                    // navigation.navigate("Calendar");
+                    }}
+                >
+                    <ButtonText>See my calendar</ButtonText>
+                </Button>
+                </ButtonGroup>
+            </AlertDialogFooter>
+            </AlertDialogContent>
+        </AlertDialog>
+
         </GluestackUIProvider>
 
 
@@ -63,7 +161,7 @@ const styles = StyleSheet.create({
 
     eventSummaryFrame: {
         border: "1px solid black",
-        flex: 0.25,
+        flex: 2,
         width: "90%",
         height: "100%",
         flexDirection: "row",
@@ -82,7 +180,6 @@ const styles = StyleSheet.create({
 
     eventImage: {
         flex: 1,
-        backgroundColor: "blue",
         height: "100%"
     },
 
@@ -106,7 +203,7 @@ const styles = StyleSheet.create({
 
     eventDescription: {
         border: "1px solid black",
-        flex: 0.8,
+        flex: 4,
         width: "90%",
         height: "25%",
         margin: 10,
@@ -121,6 +218,40 @@ const styles = StyleSheet.create({
           width: 2
         },
         alignItems: "center",
+    },
+
+    buttonsBar: {
+        border: "1px solid black",
+        flex: 0.5,
+        width: "90%",
+        height: "10%",
+        flexDirection: "row",
+        justifyContent: "space-evenly",
+        // alignItems: "center",
+        borderRadius: 10,
+        shadowColor: "grey",
+        shadowOpacity: 0.2,
+        shadowRadius: 2,
+        shadowOffset: {
+          height: 2,
+          width: 2
+        }
+    },  
+
+    button: {
+        // width: "10%",
+        height: "80%",
+        borderRadius: 10,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: FIGMA_WHITE,
+        shadowColor: "grey",
+        shadowOpacity: 0.2,
+        shadowRadius: 2,
+        shadowOffset: {
+          height: 2,
+          width: 2
+        }
     },
 
 

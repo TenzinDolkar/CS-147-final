@@ -89,7 +89,7 @@ const Body = ({navigation}) => {
           </Text>
         </View>
         <View>
-          <Image source={Icons.sun} style={styles.eventsImage} />
+        <Image source={require('../../assets/Events/walks.png')} style={styles.eventsImage} />
         </View>
       {/* </View> */}
       </TouchableOpacity>
@@ -107,7 +107,7 @@ const Body = ({navigation}) => {
           </Text>
         </View>
         <View>
-          <Image source={Icons.sun} style={styles.eventsImage} />
+        <Image source={require('../../assets/Events/grief.png')} style={styles.eventsImage} />
         </View>
       </View>
 
@@ -123,7 +123,7 @@ const Body = ({navigation}) => {
           </Text>
         </View>
         <View>
-          <Image source={require('../../assets/Profiles/parents.jpg')} style={styles.eventsImage} />
+          <Image source={require('../../assets/Events/coffee.png')} style={styles.eventsImage} />
         </View>
       </View>
     </View>

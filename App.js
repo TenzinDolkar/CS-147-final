@@ -50,7 +50,7 @@ function Home({navigation}) {
 function EventDetails() {
   return (
     <View style={styles.container}>
-    <Header />
+    {/* <Header /> */}
     <EventBody />
     </View>
   );
