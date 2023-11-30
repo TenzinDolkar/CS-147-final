@@ -124,3 +124,7 @@ const stylesheet = createStyles((theme) => ({
 
 
 */
+
+//package.json
+
+//"main": "node_modules/expo/AppEntry.js",

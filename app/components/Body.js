@@ -10,7 +10,7 @@ import {
 import Profiles from "../../assets/Profiles";
 import Icons from "../../assets/Icons";
 import { useState } from "react";
-import { Link, Stack } from "expo-router";
+//import { Link, Stack } from "expo-router";
 
 //import supabase from "./env";
 
@@ -22,22 +22,20 @@ const Body = () => {
 
   return (
     <View style={styles.main}>
-      <Link href="/description">
-        <View style={styles.box}>
-          <View style={styles.halfBox}>
-            <Text>Moms Who Walk!</Text>
-            <Text>TayTay23</Text>
-            <Text style={styles.description}>
-              {" "}
-              Join us for a day of strolling, where we celebrate motherhood one
-              step at a time! 👟🌼{""}
-            </Text>
-          </View>
-          <View>
-            <Image source={Icons.sun} style={styles.eventsImage} />
-          </View>
+      <View style={styles.box}>
+        <View style={styles.halfBox}>
+          <Text>Moms Who Walk!</Text>
+          <Text>TayTay23</Text>
+          <Text style={styles.description}>
+            {" "}
+            Join us for a day of strolling, where we celebrate motherhood one
+            step at a time! 👟🌼{""}
+          </Text>
         </View>
-      </Link>
+        <View>
+          <Image source={Icons.sun} style={styles.eventsImage} />
+        </View>
+      </View>
 
       <View style={styles.boxTwo}>
         <View style={styles.halfBox2}>
@@ -147,142 +145,9 @@ const styles = StyleSheet.create({
   //   //flexWrap: "wrap",
   //   flex: 1,
   // // },
-
-  // imageStyle: {
-  //   borderRadius: 8,
-  //   //height: "100%",
-  //   width: "100%",
-  // },
-
-  // name: {
-  //   flexDirection: "row",
-  //   justifyContent: "start",
-  //   left: windowWidth * 0.001,
-  // },
-
-  captionHeart: {
-    flexDirection: "row",
-    //width: windowWidth,
-    //height: windowHeight * 0.1, // Alternatively, use the `flex` style
-    justifyContent: "space-between",
-    alignItems: "flex-end",
-  },
-  icon: {
-    width: 25,
-    height: 25,
-    resizeMode: "contain",
-  },
-
-  icon2: {
-    width: "100%",
-    height: "100%",
-    resizeMode: "contain",
-    flex: 1, //it fills the entier space of the container
-  },
-
-  overall: {
-    flexDirection: "column",
-    justifyContent: "space-between",
-    width: "100%",
-    height: "100%",
-  },
-  text: {
-    left: windowWidth * 0.01,
-    color: "white",
-    //fontSize: 32,
-    fontFamily: "Sydney",
-    fontSize: windowHeight * 0.035,
-  },
-
-  text2: {
-    //fontSize: 18,
-    left: windowWidth * 0.01,
-    color: "white",
-    fontFamily: "Sydney",
-    fontSize: windowHeight * 0.02,
-  },
-
-  text3: {
-    fontFamily: "Sydney",
-    fontSize: windowHeight * 0.027,
-    left: windowWidth * 0.01,
-  },
-
-  container: {
-    backgroundColor: "white",
-    justifyContent: "space-around",
-    width: "80%",
-    //height: "20%",
-    borderRadius: 12,
-    // shadow: 5,
-    shadowColor: "gray",
-    //shadowOffsetWidth: 4,
-
-    margin: 25,
-    //alignItems: "center",
-    //aspectRatio: 1,
-  },
-
-  description: {
-    flexDirection: "column",
-    justifyContent: "start",
-    left: 5,
-    top: 10,
-
-    //height: "100%",
-    //alignItems: "flex-end",
-  },
-
-  playSound: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    width: "80%",
-    //maxWidth: windowWidth * 0.8,
-    margin: 20,
-    paddingTop: 5,
-    alignItems: "center",
-  },
-
-  player: {
-    aspectRatio: 1,
-    width: "15%",
-    //paddingRight: 5,
-  },
-
-  wave: {
-    width: "85%",
-    aspectRatio: 4,
-    paddingLeft: 10,
-  },
-
-  heart: {
-    backgroundColor: "white",
-    borderRadius: 50,
-    //borderWidth: "10%",
-    //borderColor: "white",
-    width: 40,
-    height: 40,
-    justifyContent: "center",
-    alignItems: "center",
-    /*flex: 1,*/
-    //width: "20%",  contianer size for the bottom line, height 100%
-    //height: "100%",
-
-    padding: 10,
-    right: 10,
-    bottom: 10,
-    //position: "absolute",
-    //flexDirection: "row",
-    //justifyContent: "space-evenly",
-  },
-  button: {
-    color: "white",
-    borderRadius: 8,
-  },
 });
 
 /*
-  
   <ImageBackground
         source={Profiles.landay.image}
         style={styles.image}
@@ -322,7 +187,6 @@ const styles = StyleSheet.create({
     </View>
   );
 };
-
 
 */
 
