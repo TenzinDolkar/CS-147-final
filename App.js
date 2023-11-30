@@ -11,6 +11,8 @@ import { Themes } from "./assets/Themes";
 import Header from "./app/components/Header";
 import Body from "./app/components/Body";
 import Footer from "./app/components/Footer";
+import { GluestackUIProvider} from "@gluestack-ui/themed"
+import { config } from "@gluestack-ui/config" // Optional if you want to use default theme
 
 /* Keep the splash screen visible while we fetch resources */
 SplashScreen.preventAutoHideAsync();
@@ -34,6 +36,17 @@ export default function App() {
   const [fontsLoaded] = useFonts({
     Sydney: require("./assets/Fonts/Sydney-Serial-Regular.ttf"),
     "Sydney-Bold": require("./assets/Fonts/Sydney-Serial-Bold.ttf"),
+    "Corben": require("./assets/Fonts/Corben-Regular.ttf"),
+    "Corben-Bold": require("./assets/Fonts/Corben-Bold.ttf"),
+    "Inter": require("./assets/Fonts/Inter-Regular.ttf"),
+    "Inter-Bold": require("./assets/Fonts/Inter-Bold.ttf"),
+    "Inter-Black": require("./assets/Fonts/Inter-Black.ttf"),
+    "Inter-ExtraBold": require("./assets/Fonts/Inter-ExtraBold.ttf"),
+    "Inter-ExtraLight": require("./assets/Fonts/Inter-ExtraLight.ttf"),
+    "Inter-Light": require("./assets/Fonts/Inter-Light.ttf"),
+    "Inter-Medium": require("./assets/Fonts/Inter-Medium.ttf"),
+    "Inter-SemiBold": require("./assets/Fonts/Inter-SemiBold.ttf"),
+    "Inter-Thin": require("./assets/Fonts/Inter-Thin.ttf"),
     // Arial: require("./assets/Fonts/Arial.ttf"),
   });
 

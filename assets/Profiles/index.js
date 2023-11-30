@@ -14,4 +14,9 @@ export default Profiles = {
     name: "Eve",
     caption: "15 miles away",
   },
+  parents: {
+    image: require("./parents.jpg"),
+    name: "parents",
+    caption: "15 miles away",
+  },
 };

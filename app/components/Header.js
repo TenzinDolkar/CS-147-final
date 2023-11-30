@@ -9,7 +9,7 @@ const Header = () => {
   return (
     <View style={styles.header}>
       {/*<Image source={Icons.menu.light} style={styles.headerIcons} /> */}
-      <Text style={styles.title}>Kith&Kin</Text>
+      <Text style={styles.title}>kith&kin</Text>
       {/*<Image source={Icons.sun} style={styles.headerIcons} /> */}
     </View>
   );
@@ -21,11 +21,13 @@ const styles = StyleSheet.create({
     width: windowWidth * 0.15,
   },
   title: {
-    fontFamily: "Arial",
+    fontFamily: "Corben",
     fontSize: windowHeight * 0.05,
     color: "#387F58",
     //maxHeight:
-    //alignItems: "center",
+    alignItems: "center",
+    margin: "auto",
+    bottom: 10,
     //height: "100%",
 
     //wHeight: windowHeight * 0.9,
@@ -40,8 +42,9 @@ const styles = StyleSheet.create({
     //borderColor: "blue", //#ededed
     width: "100%",
     //marginBottom: windowWidth * 0.06,
-    marginTop: windowWidth * 0.12,
+    paddingTop: 25,
     flex: 0.5,
+
   },
 });
 
