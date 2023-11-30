@@ -9,12 +9,16 @@ import {
 } from "react-native";
 import Profiles from "../../assets/Profiles";
 import Icons from "../../assets/Icons";
+// import Dropdown from 'react-bootstrap/Dropdown';
 import { useState } from "react";
-import { Link, Stack } from "expo-router";
+//import { Link, Stack } from "expo-router";
 
 //import supabase from "./env";
 
 const { height: windowHeight, width: windowWidth } = Dimensions.get("window");
+const FIGMA_WHITE = "#F8F7F7";
+const PINK = "#FBC6D0";
+const GREEN = "#387F58";
 //import { Icons, Themes } from "../../assets/Themes";
 
 const Body = () => {
@@ -22,13 +26,14 @@ const Body = () => {
 
   return (
     <View style={styles.main}>
-      <Link href="/description">
+      {/* <Link href="/description"> */}
         <View style={styles.box}>
           <View style={styles.halfBox}>
-            <Text>Moms Who Walk!</Text>
-            <Text>TayTay23</Text>
+            <View style={styles.eventHeader}>
+            <Text style={styles.eventTitle}>Moms Who Walk!</Text>
+            <Text style={styles.eventPoster}>TayTay23</Text>
+            </View>
             <Text style={styles.description}>
-              {" "}
               Join us for a day of strolling, where we celebrate motherhood one
               step at a time! 👟🌼{""}
             </Text>
@@ -37,33 +42,37 @@ const Body = () => {
             <Image source={Icons.sun} style={styles.eventsImage} />
           </View>
         </View>
-      </Link>
+      {/* </Link> */}
 
-      <View style={styles.boxTwo}>
-        <View style={styles.halfBox2}>
-          <Text>Monthly Coffee & Chat</Text>
-          <Text>rose_redxx</Text>
+      <View style={styles.box}>
+        <View style={styles.halfBox}>
+          <View style={styles.eventHeader}>
+          <Text style={styles.eventTitle}>Monthly Coffee & Chat</Text>
+          <Text style={styles.eventPoster}>rose_redxx</Text>
+          </View>
           <Text style={styles.description}>
             You’re not alone. Bi-weekly grief and counseling workshop hosted by
             mom/therapist Katy
           </Text>
         </View>
         <View>
-          <Image source={Icons.sun} style={styles.eventsImage2} />
+          <Image source={Icons.sun} style={styles.eventsImage} />
         </View>
       </View>
 
-      <View style={styles.boxTwo}>
-        <View style={styles.halfBox2}>
-          <Text>Monthly Coffee & Chat</Text>
-          <Text>rose_redxx</Text>
+      <View style={styles.box}>
+        <View style={styles.halfBox}>
+          <View style={styles.eventHeader}>
+          <Text style={styles.eventTitle}>Monthly Coffee & Chat</Text>
+          <Text style={styles.eventPoster}>rose_redxx</Text>
+          </View>
           <Text style={styles.description}>
             Parenting is a journey best shared! Come by for coffee at the Old
             Brew House!
           </Text>
         </View>
         <View>
-          <Image source={Icons.sun} style={styles.eventsImage2} />
+          <Image source={Icons.sun} style={styles.eventsImage} />
         </View>
       </View>
     </View>
@@ -79,10 +88,7 @@ const styles = StyleSheet.create({
 
     justifyContent: "space-evenly",
     alignItems: "center",
-    //paddingTop: windowHeight * 0.1,
-    //width: "70%",
-    borderWidth: "2%",
-    borderColor: "blue",
+    backgroundColor: "white",
   },
 
   eventsImage: {
@@ -93,51 +99,43 @@ const styles = StyleSheet.create({
     // borderColor: "pink",
   },
 
-  eventsImage2: {
-    height: "100%",
-    aspectRatio: 1,
-    width: "15%",
-    // borderWidth: "2%",
-    // borderColor: "pink",
-  },
-
   box: {
     borderWidth: "2%",
-    borderColor: "pink",
+    borderRadius: "10%",
+    borderColor: "transparent",
     width: "90%",
     height: "25%",
     margin: 2,
     padding: 2,
     flexDirection: "row",
     justifyContent: "space-between",
-    backgroundColor: "white",
-    paddingTop: 10,
-    paddingBottom: 10,
-  },
-
-  boxTwo: {
-    //paddingTop: 50,
-    width: "90%",
-    height: "25%",
-    margin: 2,
-    padding: 2,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    backgroundColor: "white",
+    backgroundColor: FIGMA_WHITE,
     paddingTop: 10,
     paddingBottom: 10,
   },
 
   halfBox: {
-    width: "70%",
-  },
-
-  halfBox2: {
-    width: "70%",
+    width: "60%",
   },
 
   description: {
     paddingTop: 5,
+  },
+
+  eventHeader: {
+    flexDirection: "column",
+    justifyContent: "space-between",
+  },
+
+  eventTitle: {
+    fontSize: windowHeight * 0.022,
+    fontWeight: "bold",
+    color: GREEN,
+  },
+
+  eventPoster: {
+    fontSize: windowHeight * 0.02,
+    color: PINK,
   },
 
   // image: {
@@ -188,24 +186,11 @@ const styles = StyleSheet.create({
   },
   text: {
     left: windowWidth * 0.01,
+    alignContent: "left",
     color: "white",
     //fontSize: 32,
     fontFamily: "Sydney",
     fontSize: windowHeight * 0.035,
-  },
-
-  text2: {
-    //fontSize: 18,
-    left: windowWidth * 0.01,
-    color: "white",
-    fontFamily: "Sydney",
-    fontSize: windowHeight * 0.02,
-  },
-
-  text3: {
-    fontFamily: "Sydney",
-    fontSize: windowHeight * 0.027,
-    left: windowWidth * 0.01,
   },
 
   container: {
@@ -225,7 +210,7 @@ const styles = StyleSheet.create({
 
   description: {
     flexDirection: "column",
-    justifyContent: "start",
+    justifyContent: "flex-start",
     left: 5,
     top: 10,
 

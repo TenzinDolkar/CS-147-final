@@ -10,6 +10,9 @@ import { Icons, Themes } from "../../assets/Themes";
 
 // advanced JS syntax: destructure and rename variables
 const { height: windowHeight, width: windowWidth } = Dimensions.get("window");
+const FIGMA_WHITE = "#F8F7F7";
+const PINK = "#FBC6D0";
+const GREEN = "#387F58";
 
 const Footer = () => {
   return (
@@ -35,7 +38,8 @@ const styles = StyleSheet.create({
     widthColor: "blue",
     width: 5,
     flexDirection: "row",
-    backgroundColor: Themes.light.navigation,
+    // backgroundColor: Themes.light.navigation,
+    backgroundColor: "white",
     width: windowWidth,
     height: windowHeight * 0.1, // Alternatively, use the `flex` style
     justifyContent: "space-around",
@@ -52,7 +56,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   text: {
-    color: "white",
+    color: "black",
   },
 });
 

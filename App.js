@@ -34,6 +34,7 @@ export default function App() {
   const [fontsLoaded] = useFonts({
     Sydney: require("./assets/Fonts/Sydney-Serial-Regular.ttf"),
     "Sydney-Bold": require("./assets/Fonts/Sydney-Serial-Bold.ttf"),
+    // Arial: require("./assets/Fonts/Arial.ttf"),
   });
 
   const onLayoutRootView = useCallback(async () => {
@@ -42,11 +43,14 @@ export default function App() {
     }
   }, [fontsLoaded]);
 
-  if (!fontsLoaded) return null;
+  if (!fontsLoaded) {
+    return null;
+  }
   /* ^Don't mind/edit the code above, it's there to load the font for you! */
   StatusBar.setBarStyle(Themes.light.statusBar);
   /* ^Don't mind/edit this one either unless you decide to do the dark theme one, in that case, you will have to change it accordingly*/
 
+  console.log("App");
   return (
     <View style={{ flex: 1 }} onLayout={onLayoutRootView}>
       <NavigationContainer>
@@ -67,7 +71,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#ededed",
-    alignItems: "center",
+    // alignItems: "center",
     justifyContent: "center",
   },
 });

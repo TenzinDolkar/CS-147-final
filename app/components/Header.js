@@ -4,6 +4,7 @@ import Icons from "../../assets/Icons";
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
+
 const Header = () => {
   return (
     <View style={styles.header}>
@@ -20,7 +21,7 @@ const styles = StyleSheet.create({
     width: windowWidth * 0.15,
   },
   title: {
-    fontFamily: "Corben",
+    fontFamily: "Arial",
     fontSize: windowHeight * 0.05,
     color: "#387F58",
     //maxHeight:
@@ -33,6 +34,7 @@ const styles = StyleSheet.create({
     //height: "10%",
     flexDirection: "row",
     justifyContent: "space-around",
+    backgroundColor: "#fac6cf",
 
     //borderWidth: 15,
     //borderColor: "blue", //#ededed
