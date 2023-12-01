@@ -98,7 +98,7 @@ const Body = ({navigation}) => {
       <View style={styles.box}>
         <View style={styles.halfBox}>
           <View style={styles.eventHeader}>
-            <Text style={styles.eventTitle}>Monthly Coffee & Chat</Text>
+            <Text style={styles.eventTitle}>Katy’s Grief Workshop</Text>
             <Text style={styles.eventPoster}>rose_redxx</Text>
           </View>
           <Text style={styles.description}>
@@ -115,11 +115,10 @@ const Body = ({navigation}) => {
         <View style={styles.halfBox}>
           <View style={styles.eventHeader}>
             <Text style={styles.eventTitle}>Monthly Coffee & Chat</Text>
-            <Text style={styles.eventPoster}>rose_redxx</Text>
+            <Text style={styles.eventPoster}>katieKat_02</Text>
           </View>
           <Text style={styles.description}>
-            Parenting is a journey best shared! Come by for coffee at the Old
-            Brew House!
+          Parenting is a journey best shared! Come by for coffee at the Old Brew House!
           </Text>
         </View>
         <View>
