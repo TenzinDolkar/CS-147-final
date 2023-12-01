@@ -11,10 +11,11 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Themes } from "./assets/Themes";
 import Header from "./app/components/Header";
 import Body from "./app/components/Body";
+import Calendar from "./app/components/calendar";
 import Footer from "./app/components/Footer";
 import EventBody from "./app/components/EventBody";
-import { GluestackUIProvider} from "@gluestack-ui/themed"
-import { config } from "@gluestack-ui/config" // Optional if you want to use default theme
+import { GluestackUIProvider } from "@gluestack-ui/themed";
+import { config } from "@gluestack-ui/config"; // Optional if you want to use default theme
 
 /* Keep the splash screen visible while we fetch resources */
 SplashScreen.preventAutoHideAsync();
@@ -32,26 +33,35 @@ function HomeScreen() {
           component={Home}
           options={{ headerShown: false }}
         />
-        <Stack.Screen name="EventDetails" component={EventDetails} options={{title:"Event Details"}} />
+        <Stack.Screen
+          name="EventDetails"
+          component={EventDetails}
+          options={{ title: "Event Details" }}
+        />
+        <Stack.Screen
+          name="Calendar"
+          component={Calendar}
+          options={{ title: "Calendar " }}
+        />
       </Stack.Navigator>
     </View>
   );
 }
 
-function Home({navigation}) {
+function Home({ navigation }) {
   return (
     <View style={styles.container}>
-    <Header />
-    <Body navigation={navigation} />
+      <Header />
+      <Body navigation={navigation} />
     </View>
   );
 }
 
-function EventDetails() {
+function EventDetails({ navigation }) {
   return (
     <View style={styles.container}>
-    {/* <Header /> */}
-    <EventBody />
+      {/* <Header /> */}
+      <EventBody navigation={navigation} />
     </View>
   );
 }
@@ -63,9 +73,9 @@ export default function App() {
   const [fontsLoaded] = useFonts({
     Sydney: require("./assets/Fonts/Sydney-Serial-Regular.ttf"),
     "Sydney-Bold": require("./assets/Fonts/Sydney-Serial-Bold.ttf"),
-    "Corben": require("./assets/Fonts/Corben-Regular.ttf"),
+    Corben: require("./assets/Fonts/Corben-Regular.ttf"),
     "Corben-Bold": require("./assets/Fonts/Corben-Bold.ttf"),
-    "Inter": require("./assets/Fonts/Inter-Regular.ttf"),
+    Inter: require("./assets/Fonts/Inter-Regular.ttf"),
     "Inter-Bold": require("./assets/Fonts/Inter-Bold.ttf"),
     "Inter-Black": require("./assets/Fonts/Inter-Black.ttf"),
     "Inter-ExtraBold": require("./assets/Fonts/Inter-ExtraBold.ttf"),
@@ -119,5 +129,3 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 });
-
-

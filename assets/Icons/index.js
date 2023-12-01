@@ -1,21 +1,26 @@
 export default {
   home: {
-    nav: require("./home.png"),
+    nav: require("./home2.png"),
   },
 
   chat: {
-    nav: require("./chat.png"),
+    nav: require("./Vector3.png"),
   },
   connect: {
-    nav: require("./connect.png"),
+    nav: require("./Vector.png"),
+  },
+
+  board: {
+    nav: require("./Vector2.png"),
   },
   profile: {
-    nav: require("./profile.png"),
+    nav: require("./mdi_account.png"),
   },
   audioWave: {
     light: require("./audio_waveform_light.png"),
     dark: require("./audio_waveform_dark.png"),
   },
+
   sun: require("./sun.png"),
   moon: require("./moon.png"),
   player: {

@@ -26,7 +26,7 @@ const Footer = () => {
         {/*<Text style={styles.text}>Matches</Text> */}
       </View>
       <View style={styles.iconContainer}>
-        <Image source={Icons.home.nav} style={styles.icon} />
+        <Image source={Icons.board.nav} style={styles.icon} />
       </View>
       <View style={styles.iconContainer}>
         <Image source={Icons.connect.nav} style={styles.icon} />
@@ -51,8 +51,8 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
   },
   icon: {
-    width: "40%", // windowWidth * 0.02,
-    height: "40%", //windowHeight * 0.02,
+    width: "60%", // windowWidth * 0.02,
+    height: "50%", //windowHeight * 0.02,
     resizeMode: "contain",
   },
   iconContainer: {
