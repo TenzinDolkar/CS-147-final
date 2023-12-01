@@ -1,4 +1,17 @@
 export default {
+  home: {
+    nav: require("./home.png"),
+  },
+
+  chat: {
+    nav: require("./chat.png"),
+  },
+  connect: {
+    nav: require("./connect.png"),
+  },
+  profile: {
+    nav: require("./profile.png"),
+  },
   audioWave: {
     light: require("./audio_waveform_light.png"),
     dark: require("./audio_waveform_dark.png"),

@@ -18,16 +18,22 @@ const Footer = () => {
   return (
     <View style={styles.navigationContainer}>
       <View style={styles.iconContainer}>
-        <Image source={Icons.discover.light} style={styles.icon} />
-        <Text style={styles.text}>Discover</Text>
+        <Image source={Icons.home.nav} style={styles.icon} />
+        {/*<Text style={styles.text}>Discover</Text> */}
       </View>
       <View style={styles.iconContainer}>
-        <Image source={Icons.heart.light} style={styles.icon} />
-        <Text style={styles.text}>Matches</Text>
+        <Image source={Icons.chat.nav} style={styles.icon} />
+        {/*<Text style={styles.text}>Matches</Text> */}
       </View>
       <View style={styles.iconContainer}>
-        <Image source={Icons.messages.light} style={styles.icon} />
-        <Text style={styles.text}>DMs</Text>
+        <Image source={Icons.home.nav} style={styles.icon} />
+      </View>
+      <View style={styles.iconContainer}>
+        <Image source={Icons.connect.nav} style={styles.icon} />
+      </View>
+
+      <View style={styles.iconContainer}>
+        <Image source={Icons.profile.nav} style={styles.icon} />
       </View>
     </View>
   );
