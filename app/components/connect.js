@@ -55,6 +55,7 @@ import {
   ButtonGroup,
 } from "@gluestack-ui/themed";
 import { Link } from "expo-router";
+import { isWhiteSpaceLike } from "typescript";
 
 export default function Connect() {
   const [value, setValue] = React.useState('');
@@ -68,7 +69,7 @@ export default function Connect() {
           <InputSlot pl="$3">
             <InputIcon as={SearchIcon} />
           </InputSlot>
-          <InputField onChange={(e: any) => {
+          <InputField onChange={(e) => {
             setValue(e.nativeEvent.text);
           }} value={value} placeholder="Search all profile..." />
         </Input>
@@ -212,6 +213,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
+    backgroundColor: "white",
     padding: 24,
   },
   location: {
@@ -264,7 +266,8 @@ const styles = StyleSheet.create({
 
   searchBar: {
     width: "90%",
-    height: "5%"
+    height: "5%",
+    margin: 10,
   },
 
   buttonsBar: {
@@ -272,6 +275,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+    margin: 10
   },
 
   description: {
@@ -306,7 +310,7 @@ const styles = StyleSheet.create({
     borderColor: "transparent",
     width: "90%",
     height: "15%",
-    margin: 2,
+    margin: 10,
     padding: 2,
     flexDirection: "row",
     justifyContent: "space-between",
