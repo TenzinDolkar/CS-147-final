@@ -88,7 +88,7 @@ function ConnectScreen() {
         <Stack.Screen
           name="Connect"
           component={Connect}
-          //options={{ headerShown: false }}
+          options={{ headerShown: false }}
         />
       </Stack.Navigator>
     </View>

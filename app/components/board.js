@@ -26,21 +26,26 @@ const FUSCHIA = "#E45B74";
 
 
 const renderComment = ({ item }) => {
-  return (
-    <View id = {item.id} style={styles.main}>
-      
+  return ( 
+    <View id = {item.id} style={styles.container}>
+       <View style={styles.imageBox}>
+           <Image source={Icons.sun} style={styles.eventsImage} />
+            {/* <Image source={item.pic } style={styles.eventsImage} /> */}
+           {/* </Image> <Image source={require('../../assets/Events/walks.png')} style={styles.eventsImage} /> */}
+      </View>
         <View style={styles.box}>
-          <View>
-            <Text>{item.title}</Text>
-            <Text>{item.userName}</Text>
-            <Text> {item.description}</Text>
-
-          </View>
-          <View>
-            <Image source={Icons.sun} style={styles.eventsImage} />
+          <View style={styles.texts}>
+            <View style={styles.titleNtag}>
+              <Text style={styles.title} >{item.title} </Text>
+              <Text style={styles.tag}>{item.tag}</Text>
+            </View>
+            <Text style={styles.userName} >{item.userName} </Text>
+            <Text style={styles.description}>  {item.description}</Text>
+            {/* <Text style={styles.pic}>  {item.pic}</Text> */}
           </View>
         </View>
       </View>
+
     // <Comment
     //   id={item.id}
     //   title={item.title}
@@ -118,6 +123,7 @@ const onMessageSend = async () => {
       </SelectPortal>
     </Select>
 
+     <TouchableOpacity onPress={() => navigation.navigate("EventDetails")} > 
     <Button
       size="sm"
       borderRadius="10"
@@ -129,6 +135,7 @@ const onMessageSend = async () => {
     >
       <ButtonIcon as={EditIcon} />
     </Button>
+    </TouchableOpacity>
     </View>
     </View>
 
@@ -158,8 +165,6 @@ const onMessageSend = async () => {
   
 
 
-
-
      {/* //<TouchableOpacity onPress={() => navigation.navigate("EventDetails")} style={styles.box}>   */}
      {/* <View style={styles.box}>
       <View>
@@ -175,61 +180,9 @@ const onMessageSend = async () => {
           </View>  
         </View>
         
-        </View> */}
-{/* 
-        <View style={styles.box}>
-      <View>
-        <Image source={require('../../assets/Events/walks.png')} style={styles.eventsImage} />
-      </View>
-        <View style={styles.halfBox}>
-          <View style={styles.eventHeader}>
-            <Text style={styles.name}>Back pain issues</Text>
-          </View>
-          <View>
-            <Text style={styles.location}>JungLee12</Text>
-            <Text style={styles.miles}>My back is killing me! No gels seems to help.</Text>
-          </View>  
-        </View>
-        
-        </View>
-        
-
-        <View style={styles.box}>
-      <View>
-        <Image source={require('../../assets/Events/walks.png')} style={styles.eventsImage} />
-      </View>
-        <View style={styles.halfBox}>
-          <View style={styles.eventHeader}>
-            <Text style={styles.name}>New neighbor</Text>
-          </View>
-          <View>
-            <Text style={styles.location}>AlejandraGarciaa</Text>
-            <Text style={styles.miles}>Any good kids playground in the neighborhood?</Text>
-          </View>  
-        </View>
-        
-        </View>
-
-
-        <View style={styles.box}>
-      <View>
-        <Image source={require('../../assets/Events/walks.png')} style={styles.eventsImage} />
-      </View>
-        <View style={styles.halfBox}>
-          <View style={styles.eventHeader}>
-            <Text style={styles.name}>Postpartum self care</Text>
-          </View>
-          <View>
-            <Text style={styles.location}>XavierMalik</Text>
-            <Text style={styles.miles}>Tips for postpartum depression</Text>
-          </View>  
-        </View>
-        
-        </View>
-       </TouchableOpacity> */}
-
+        </View> 
+       </TouchableOpacity>  */}
      
-
 
     </GluestackUIProvider>)
 };
@@ -241,42 +194,84 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 24,
     color: "black",
+    
+  
+  },
+
+  userName: {
+    color: FUSCHIA,
+    fontSize: 12,
+  },
+
+  description: {
+    fontSize: 13,
+  },
+
+  texts: {
+    width: "90%",
+  },
+  titleNtag: {
+    width: "100%",
+    // borderColor: "blue",
+    // borderWidth: 1,
+     flexDirection: "row",
+    justifyContent: "flex-start",
+  },
+  tag: {
+    fontSize:12,
+    padding: 3,
+    backgroundColor: "pink",
+    
+  },
+  
+  container: {
+    //height: 20,
+    width: "90%",
+    flex: 1,
+    marginLeft: 20,
+    // justifyContent: "center",
+    //maxWidth: 960,
+    // marginHorizontal: "auto",
+    // borderColor: "blue",
+    // borderWidth: 1,
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    backgroundColor: FIGMA_WHITE,
+    paddingLeft: 25,
 
   },
-  // container: {
-  //   height: 20,
-  //   flex: 1,
-  //   justifyContent: "center",
-  //   maxWidth: 960,
-  //   marginHorizontal: "auto",
-  // }
-  // ,
 
   box: {
     borderWidth: "2%",
     borderRadius: "10%",
     borderColor: "transparent",
-    width: "90%",
-    height: "55%",
+     width: "80%",
+    // height: "55%",
     margin: 2,
     padding: 2,
     flexDirection: "row",
     justifyContent: "space-between",
-    backgroundColor: FIGMA_WHITE,
+    //backgroundColor: FIGMA_WHITE,
     paddingTop: 10,
     paddingBottom: 10
+
   },
 
   eventHeader: {
     flexDirection: "column",
     justifyContent: "space-between"
   },
-  halfBox: {
-    width: "75%",
-  },
+
   title: {
-    fontSize: 64,
-    fontWeight: "bold",
+    fontSize: 15,
+    fontWeight: "bold", 
+    color: GREEN
+  },
+
+  imageBox: {
+    width: "20%",
+    height: "50%",
+   // paddingLeft: 10,
   },
 
   eventsImage: {
@@ -284,17 +279,12 @@ const styles = StyleSheet.create({
     aspectRatio: 1,
     width: "15%",
     borderRadius: 50,
+
     // borderWidth: "2%",
     // borderColor: "pink",
   },
-  location: {
-color: FUSCHIA
-  },
 
-  subtitle: {
-    fontSize: 36,
-    color: "#38434D",
-  },
+
   searchBar: {
     width: "90%",
     height: "5%"
@@ -313,16 +303,12 @@ color: FUSCHIA
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+    paddingTop: 40,
   },
 
-  name: {
-    fontSize: windowHeight * 0.023,
-    fontFamily: "Inter-Medium",
-    color: GREEN
-  },
 
   dropDown: {
-    width: "30%",
+    width: "40%",
     alignSelf: "left",
     backgroundColor: FIGMA_WHITE,
     borderRadius: 10,
@@ -336,38 +322,22 @@ color: FUSCHIA
 
     // container: {
     //   flex: 1,
-    //   alignItems: 'center',
-    //   justifyContent: 'center',
-    //   backgroundColor: '#ecf0f1',
-    //   padding: 8,
+    //   //alignItems: 'center',
+    //   // justifyContent: 'center',
+    //   flexDirection: "row",
+    // justifyContent: "space-between",
+    //   //backgroundColor: '#ecf0f1',
+    //   //padding: 8,
     // },
+
     posts: {
       marginTop: 12
-    },  
-    composer: {
-      flexDirection: 'row',
-      backgroundColor: 'white',
-      width: "100%",
-      paddingHorizontal: 12,
-      paddingVertical: 8,
-      gap: 8
-    },
-    input: {
-      flex: 1,
-      height: 30,
-      paddingHorizontal: 8,
-      backgroundColor: 'rgba(173, 216, 230, 0.5)', // CSS 'lightblue' with 50% opacity
-      borderRadius: 999
-    },
+    }, 
     send: {
       alignItems: 'center',
       justifyContent: 'center'
     }
   },
-
-
-
-
 }
 
 );
