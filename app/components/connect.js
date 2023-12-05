@@ -55,7 +55,6 @@ import {
   ButtonGroup,
 } from "@gluestack-ui/themed";
 import { Link } from "expo-router";
-import { isWhiteSpaceLike } from "typescript";
 
 export default function Connect() {
   const [value, setValue] = React.useState('');
@@ -71,7 +70,7 @@ export default function Connect() {
           </InputSlot>
           <InputField onChange={(e) => {
             setValue(e.nativeEvent.text);
-          }} value={value} placeholder="Search all profile..." />
+          }} value={value} placeholder="Search all profiles..." />
         </Input>
       </View>
 
@@ -79,7 +78,7 @@ export default function Connect() {
     
       <Select size={"md"} variant={"rounded"} isInvalid={false} isDisabled={false} style={styles.dropDown}>
         <SelectTrigger size={size} variant={variant} >
-          <SelectInput placeholder="Radius" />
+          <SelectInput placeholder="Distance" />
           <SelectIcon mr={variant === 'underlined' ? 0 : '$3'} ml={variant === 'underlined' ? '$3' : 0} as={ChevronDownIcon} />
         </SelectTrigger>
         <SelectPortal>
@@ -88,9 +87,11 @@ export default function Connect() {
             <SelectDragIndicatorWrapper>
               <SelectDragIndicator />
             </SelectDragIndicatorWrapper>
-            <SelectItem label="Newest" value="Newest"  />
-            <SelectItem label="Nearest" value="Nearest"  />
-            <SelectItem label="Popular" value="Popular"  />
+            <SelectItem label="<5 mi" value="<5 mi"  />
+            <SelectItem label="5-10 mi" value="5-10 mi"  />
+            <SelectItem label="10-20 mi" value="10-20 mi"  />
+            <SelectItem label=">20 mi" value=">20 mi"  />
+
           </SelectContent>
         </SelectPortal>
       </Select>
@@ -98,7 +99,7 @@ export default function Connect() {
 
       <Select size={"md"} variant={"rounded"} isInvalid={false} isDisabled={false} style={styles.dropDown}>
         <SelectTrigger size={size} variant={variant} >
-          <SelectInput placeholder="Age" />
+          <SelectInput placeholder="Language" />
           <SelectIcon mr={variant === 'underlined' ? 0 : '$3'} ml={variant === 'underlined' ? '$3' : 0} as={ChevronDownIcon} />
         </SelectTrigger>
         <SelectPortal>
@@ -107,9 +108,15 @@ export default function Connect() {
             <SelectDragIndicatorWrapper>
               <SelectDragIndicator />
             </SelectDragIndicatorWrapper>
-            <SelectItem label="Newest" value="Newest"  />
-            <SelectItem label="Nearest" value="Nearest"  />
-            <SelectItem label="Popular" value="Popular"  />
+            <SelectItem label="English" value="English"  />
+            <SelectItem label="Spanish" value="Spanish"  />
+            <SelectItem label="French" value="French"  />
+            <SelectItem label="Chinese" value="Chinese"  />
+            <SelectItem label="Hindi" value="Hindi"  />
+            <SelectItem label="Arabic" value="Arabic"  />
+            <SelectItem label="Portuguese" value="Portuguese"  />
+            <SelectItem label="Bengali" value="Bengali"  />
+            <SelectItem label="Russian" value="Russian"  />
           </SelectContent>
         </SelectPortal>
       </Select>
@@ -126,9 +133,12 @@ export default function Connect() {
             <SelectDragIndicatorWrapper>
               <SelectDragIndicator />
             </SelectDragIndicatorWrapper>
-            <SelectItem label="Newest" value="Newest"  />
-            <SelectItem label="Nearest" value="Nearest"  />
-            <SelectItem label="Popular" value="Popular"  />
+            <SelectItem label="Newborn (<2 months)" value="Newborn (<2 months)"  />
+            <SelectItem label="Infant (<24 months)" value="Infant (<24 months)"  />
+            <SelectItem label="Toddler (<4 years)" value="Toddler (<4 years)"  />
+            <SelectItem label="Young Child (5-12 years)" value="Young Child (5-10 years)"  />
+            <SelectItem label="Adolescent (13-17 years)" value="Adolescent (13-17 years)"  />
+
           </SelectContent>
         </SelectPortal>
       </Select>
@@ -137,7 +147,7 @@ export default function Connect() {
      {/* <TouchableOpacity onPress={() => navigation.navigate("EventDetails")} style={styles.box}>   */}
      <View style={styles.box}>
       <View>
-        <Image source={require('../../assets/Events/walks.png')} style={styles.eventsImage} />
+        <Image source={require('../../assets/Profiles/zeinab.jpg')} style={styles.eventsImage} />
       </View>
         <View style={styles.halfBox}>
           <View style={styles.eventHeader}>
@@ -153,15 +163,15 @@ export default function Connect() {
 
         <View style={styles.box}>
       <View>
-        <Image source={require('../../assets/Events/walks.png')} style={styles.eventsImage} />
+        <Image source={require('../../assets/Profiles/kofi.jpg')} style={styles.eventsImage} />
       </View>
         <View style={styles.halfBox}>
           <View style={styles.eventHeader}>
             <Text style={styles.name}>Kofi Mensah</Text>
           </View>
           <View>
-            <Text style={styles.location}>Redwood City, CA</Text>
-            <Text style={styles.miles}>1.1 mi</Text>
+            <Text style={styles.location}>Pasadena, CA</Text>
+            <Text style={styles.miles}>15 mi</Text>
           </View>  
         </View>
         
@@ -170,15 +180,15 @@ export default function Connect() {
 
         <View style={styles.box}>
       <View>
-        <Image source={require('../../assets/Events/walks.png')} style={styles.eventsImage} />
+        <Image source={require('../../assets/Profiles/ruth.jpg')} style={styles.eventsImage} />
       </View>
         <View style={styles.halfBox}>
           <View style={styles.eventHeader}>
             <Text style={styles.name}>Ruth Ella Johnson</Text>
           </View>
           <View>
-            <Text style={styles.location}>Redwood City, CA</Text>
-            <Text style={styles.miles}>1.1 mi</Text>
+            <Text style={styles.location}>San Francisco, CA</Text>
+            <Text style={styles.miles}>20 mi</Text>
           </View>  
         </View>
         
@@ -187,15 +197,15 @@ export default function Connect() {
 
         <View style={styles.box}>
       <View>
-        <Image source={require('../../assets/Events/walks.png')} style={styles.eventsImage} />
+        <Image source={require('../../assets/Profiles/raffy.jpg')} style={styles.eventsImage} />
       </View>
         <View style={styles.halfBox}>
           <View style={styles.eventHeader}>
             <Text style={styles.name}>Raffy Antoni</Text>
           </View>
           <View>
-            <Text style={styles.location}>Redwood City, CA</Text>
-            <Text style={styles.miles}>1.1 mi</Text>
+            <Text style={styles.location}>Mountain View, CA</Text>
+            <Text style={styles.miles}>21 mi</Text>
           </View>  
         </View>
         
@@ -213,8 +223,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    backgroundColor: "white",
     padding: 24,
+    backgroundColor: "white",
   },
   location: {
 
