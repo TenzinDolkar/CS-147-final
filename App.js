@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { StyleSheet, Text, View, StatusBar } from "react-native";
+import { StyleSheet, Image, Text, View, StatusBar } from "react-native";
 //import { Themes } from “./assets/Themes”;
 
 import { useFonts } from "expo-font";
@@ -8,12 +8,17 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import { Themes } from "./assets/Themes";
+import { Themes, Icons } from "./assets/Themes";
 import Header from "./app/components/Header";
 import Body from "./app/components/Body";
 import Calendar from "./app/components/calendar";
 import Footer from "./app/components/Footer";
 import EventBody from "./app/components/EventBody";
+
+import Chat from "./app/components/chat";
+import Board from "./app/components/board";
+import Connect from "./app/components/connect";
+import Profile from "./app/components/profile";
 import { GluestackUIProvider } from "@gluestack-ui/themed";
 import { config } from "@gluestack-ui/config"; // Optional if you want to use default theme
 
@@ -23,8 +28,8 @@ SplashScreen.preventAutoHideAsync();
 /* This is the home screen used for the navigation system, we'll
  * learn more about in the coming weeks!
  */
+
 function HomeScreen() {
-  /* TODO: insert your code here */
   return (
     <View style={styles.container}>
       <Stack.Navigator initialRouteName="Home">
@@ -42,6 +47,62 @@ function HomeScreen() {
           name="Calendar"
           component={Calendar}
           options={{ title: "Calendar " }}
+        />
+      </Stack.Navigator>
+    </View>
+  );
+}
+
+function ChatScreen() {
+  return (
+    <View style={styles.container}>
+      <Stack.Navigator initialRouteName="Chat">
+        <Stack.Screen
+          name="Chat"
+          component={Chat}
+          options={{ headerShown: false }}
+        />
+      </Stack.Navigator>
+    </View>
+  );
+}
+
+function BoardScreen() {
+  return (
+    <View style={styles.container}>
+      <Stack.Navigator initialRouteName="Board">
+        <Stack.Screen
+          name="Board"
+          component={Board}
+          options={{ headerShown: false }}
+        />
+      </Stack.Navigator>
+    </View>
+  );
+}
+
+function ConnectScreen() {
+  return (
+    <View style={styles.container}>
+      <Stack.Navigator initialRouteName="Connect">
+        <Stack.Screen
+          name="Connect"
+          component={Connect}
+          options={{ headerShown: false }}
+        />
+      </Stack.Navigator>
+    </View>
+  );
+}
+
+function ProfileScreen() {
+  return (
+    <View style={styles.container}>
+      <Stack.Navigator initialRouteName="Profile">
+        <Stack.Screen
+          name="Profile"
+          component={Profile}
+          options={{ headerShown: false }}
         />
       </Stack.Navigator>
     </View>
@@ -105,16 +166,41 @@ export default function App() {
     <View style={{ flex: 1 }} onLayout={onLayoutRootView}>
       <NavigationContainer>
         <Tab.Navigator
-          tabBar={() => <Footer />}
-          screenOptions={{
-            headerShown: false,
-          }}
+          // tabBar={() => <Footer />}
+          // screenOptions={{
+          //   headerShown: false,
+          // }}
+
+          //for every workflow in your tab navigator, if there's more than one page, you want to
+          //pass in a stack as the component
+
+          screenOptions={({ route }) => ({
+            tabBarIcon: ({ focused, color, size }) => {
+              let url;
+              if (route.name === "Home") {
+                url = focused ? Icons.home.nav : Icons.homeEmpty.nav;
+              } else if (route.name === "Chat") {
+                url = focused ? Icons.chatFilled.nav : Icons.chat.nav;
+              } else if (route.name === "Board") {
+                url = focused ? Icons.boardFilled.nav : Icons.board.nav;
+              } else if (route.name === "Connect") {
+                url = focused ? Icons.connectFilled.nav : Icons.connect.nav;
+              } else if (route.name === "Profile") {
+                url = focused ? Icons.profileFilled.nav : Icons.profile.nav;
+              }
+
+              return <Image source={url} size={size} color={color} />;
+              //return <Image source={Icons.home.nav} />;
+            },
+            //</NavigationContainer>tabBarActiveTintColor: "tomato",
+            //tabBarInactiveTintColor: "gray",
+          })}
         >
-          <Tab.Screen name="HomeScreen" component={HomeScreen} />
-          {/* <Tab.Screen name="Home" component={ChatScreen} />
-          <Tab.Screen name="Home" component={BoardScreen} />
-          <Tab.Screen name="Home" component={ConnectScreen} />
-          <Tab.Screen name="Home" component={AccountScreen} /> */}
+          <Tab.Screen name="Home" component={HomeScreen} />
+          <Tab.Screen name="Chat" component={ChatScreen} />
+          <Tab.Screen name="Board" component={BoardScreen} />
+          <Tab.Screen name="Connect" component={ConnectScreen} />
+          <Tab.Screen name="Profile" component={ProfileScreen} />
         </Tab.Navigator>
       </NavigationContainer>
     </View>
@@ -125,7 +211,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#ededed",
-    // alignItems: "center",
+    //alignItems: "center",
     justifyContent: "center",
   },
 });

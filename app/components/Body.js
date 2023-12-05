@@ -24,7 +24,7 @@ const FUSCHIA = "#E45B74";
 const Body = ({navigation}) => {
   const [value, setValue] = React.useState('');
   let selectIconSize = '';
-  const [liked, isLiked] = useState(false);
+  {/*const [liked, isLiked] = useState(false);   */}
   return <GluestackUIProvider config={config}>
     <View style={styles.main}>
 
@@ -75,7 +75,6 @@ const Body = ({navigation}) => {
       </View>
 
 
-      
       <TouchableOpacity onPress={() => navigation.navigate("EventDetails")} style={styles.box}>
       {/* <View style={styles.box}> */}
         <View style={styles.halfBox}>
@@ -93,7 +92,6 @@ const Body = ({navigation}) => {
         </View>
       {/* </View> */}
       </TouchableOpacity>
-
 
       <View style={styles.box}>
         <View style={styles.halfBox}>
@@ -201,7 +199,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
   },
-
 
   dropDown: {
     width: "30%",

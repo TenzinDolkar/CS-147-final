@@ -2,19 +2,37 @@ export default {
   home: {
     nav: require("./home2.png"),
   },
+  homeEmpty: {
+    nav: require("./homeEmpty.png"),
+  },
 
   chat: {
     nav: require("./Vector3.png"),
   },
+  chatFilled: {
+    nav: require("./ChatFilled.png"),
+  },
+
   connect: {
     nav: require("./Vector.png"),
+  },
+  connectFilled: {
+    nav: require("./connectFilled.png"),
   },
 
   board: {
     nav: require("./Vector2.png"),
   },
+
+  boardFilled: {
+    nav: require("./boardFilled.png"),
+  },
   profile: {
     nav: require("./mdi_account.png"),
+  },
+
+  profileFilled: {
+    nav: require("./profileFilled.png"),
   },
   audioWave: {
     light: require("./audio_waveform_light.png"),

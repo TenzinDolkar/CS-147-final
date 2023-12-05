@@ -2,11 +2,11 @@ import { StyleSheet, Text, View } from "react-native";
 
 import { Link } from "expo-router";
 
-export default function Chat() {
+export default function Profile() {
   return (
     <View style={styles.container}>
       <View style={styles.main}>
-        <Text style={styles.title}>Chat</Text>
+        <Text style={styles.title}>Profile</Text>
       </View>
     </View>
   );

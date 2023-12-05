@@ -1,9 +1,4 @@
 export default Profiles = {
-  landay: {
-    image: require("./landay.jpg"),
-    name: "James",
-    caption: "1 mile away",
-  },
   man: {
     image: require("./man1.jpg"),
     name: "Richard",
