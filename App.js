@@ -32,21 +32,29 @@ SplashScreen.preventAutoHideAsync();
 function HomeScreen() {
   return (
     <View style={styles.container}>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator initialRouteName="Home"
+      screenOptions={{headerShown: false,
+        headerMode: 'none'}}
+      options={{ headerShown: false }}
+      
+      >
         <Stack.Screen
           name="Home"
           component={Home}
           options={{ headerShown: false }}
+          screenOptions={{headerShown: false}}
         />
         <Stack.Screen
           name="EventDetails"
           component={EventDetails}
-          options={{ title: "Event Details" }}
+          options={{ title: "Event Details",
+          headerShown: false}}
         />
         <Stack.Screen
           name="Calendar"
           component={Calendar}
-          options={{ title: "Calendar " }}
+          options={{ title: "Calendar ",
+          headerShown: false }}
         />
       </Stack.Navigator>
     </View>
@@ -164,8 +172,9 @@ export default function App() {
   console.log("App");
   return (
     <View style={{ flex: 1 }} onLayout={onLayoutRootView}>
-      <NavigationContainer>
+      <NavigationContainer >
         <Tab.Navigator
+        
           // tabBar={() => <Footer />}
           // screenOptions={{
           //   headerShown: false,
@@ -195,8 +204,11 @@ export default function App() {
             //</NavigationContainer>tabBarActiveTintColor: "tomato",
             //tabBarInactiveTintColor: "gray",
           })}
+          options={{ headerShown: false }}
         >
-          <Tab.Screen name="Home" component={HomeScreen} />
+          <Tab.Screen name="Home" component={HomeScreen} 
+          options={{headerShown: false}}
+          />
           <Tab.Screen name="Chat" component={ChatScreen} />
           <Tab.Screen name="Board" component={BoardScreen} />
           <Tab.Screen name="Connect" component={ConnectScreen} />
