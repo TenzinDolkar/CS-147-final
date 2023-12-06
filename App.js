@@ -19,6 +19,7 @@ import Chat from "./app/components/chat";
 import Board from "./app/components/board";
 import Connect from "./app/components/connect";
 import Profile from "./app/components/profile";
+import Post from "./app/components/post";
 import { GluestackUIProvider } from "@gluestack-ui/themed";
 import { config } from "@gluestack-ui/config"; // Optional if you want to use default theme
 
@@ -32,29 +33,26 @@ SplashScreen.preventAutoHideAsync();
 function HomeScreen() {
   return (
     <View style={styles.container}>
-      <Stack.Navigator initialRouteName="Home"
-      screenOptions={{headerShown: false,
-        headerMode: 'none'}}
-      options={{ headerShown: false }}
-      
+      <Stack.Navigator
+        initialRouteName="Home"
+        screenOptions={{ headerShown: false, headerMode: "none" }}
+        options={{ headerShown: false }}
       >
         <Stack.Screen
           name="Home"
           component={Home}
           options={{ headerShown: false }}
-          screenOptions={{headerShown: false}}
+          screenOptions={{ headerShown: false }}
         />
         <Stack.Screen
           name="EventDetails"
           component={EventDetails}
-          options={{ title: "Event Details",
-          headerShown: false}}
+          options={{ title: "Event Details", headerShown: false }}
         />
         <Stack.Screen
           name="Calendar"
           component={Calendar}
-          options={{ title: "Calendar ",
-          headerShown: false }}
+          options={{ title: "Calendar ", headerShown: false }}
         />
       </Stack.Navigator>
     </View>
@@ -83,6 +81,11 @@ function BoardScreen() {
           name="Board"
           component={Board}
           options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Post"
+          component={Post}
+          options={{ title: "Post", headerShown: false }}
         />
       </Stack.Navigator>
     </View>
@@ -172,9 +175,8 @@ export default function App() {
   console.log("App");
   return (
     <View style={{ flex: 1 }} onLayout={onLayoutRootView}>
-      <NavigationContainer >
+      <NavigationContainer>
         <Tab.Navigator
-        
           // tabBar={() => <Footer />}
           // screenOptions={{
           //   headerShown: false,
@@ -206,8 +208,10 @@ export default function App() {
           })}
           options={{ headerShown: false }}
         >
-          <Tab.Screen name="Home" component={HomeScreen} 
-          options={{headerShown: false}}
+          <Tab.Screen
+            name="Home"
+            component={HomeScreen}
+            options={{ headerShown: false }}
           />
           <Tab.Screen name="Chat" component={ChatScreen} />
           <Tab.Screen name="Board" component={BoardScreen} />

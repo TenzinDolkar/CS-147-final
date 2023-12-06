@@ -11,6 +11,21 @@ import { View, Text, ImageBackground, Image, Pressable, Dimensions, TouchableOpa
 import Profiles from "../../assets/Profiles";
 import Icons from "../../assets/Icons";
 import { useState, useEffect} from "react";
+import {
+  AlertDialog,
+  AlertDialogBackdrop,
+  AlertDialogContent,
+  AlertDialogHeader,
+  AlertDialogCloseButton,
+  AlertDialogFooter,
+  AlertDialogBody,
+  Heading,
+  Icon,
+  CloseIcon,
+  ButtonGroup,
+} from "@gluestack-ui/themed";
+// import Calendar from "./assets/calendar";
+
 //import { Link, Stack } from "expo-router";
 
 import supabase from "./supabase.js";
@@ -26,11 +41,20 @@ const FUSCHIA = "#E45B74";
 
 
 const renderComment = ({ item }) => {
+  //console.log(item);
+
+  // let tagColor = null;
+  // // if statements
+  // if (...) {
+  //   tagColor = ...
+  // } else if ...
+
+
   return ( 
     <View id = {item.id} style={styles.container}>
        <View style={styles.imageBox}>
-           <Image source={Icons.sun} style={styles.eventsImage} />
-            {/* <Image source={item.pic } style={styles.eventsImage} /> */}
+           {/* <Image source={Icons.sun} style={styles.eventsImage} /> */}
+            <Image src={item.pic} style={styles.eventsImage} />
            {/* </Image> <Image source={require('../../assets/Events/walks.png')} style={styles.eventsImage} /> */}
       </View>
         <View style={styles.box}>
@@ -38,6 +62,8 @@ const renderComment = ({ item }) => {
             <View style={styles.titleNtag}>
               <Text style={styles.title} >{item.title} </Text>
               <Text style={styles.tag}>{item.tag}</Text>
+              {/* <Text style={[styles.tag, {backgroundColor: tagColor}]}>{item.tag}</Text> */}
+
             </View>
             <Text style={styles.userName} >{item.userName} </Text>
             <Text style={styles.description}>  {item.description}</Text>
@@ -56,14 +82,17 @@ const renderComment = ({ item }) => {
   );
 };
 
-export default function Board() {
+// export default function Board() {
+  const Board = ({navigation}) => {
   const [value, setValue] = React.useState('');
   
   const [data, setData] = useState(null);
   const [input, setInput] = useState("");
+  const [showAlertDialog, setShowAlertDialog] = React.useState(false);
+  const [showSuccess, setShowSuccess] = React.useState(false);
+  const [hasRSVPed, setHasRSVPed] = React.useState(false);
 
   let selectIconSize = '';
-
 
   const [liked, isLiked] = useState(false);
 
@@ -71,21 +100,13 @@ export default function Board() {
     // Fetch data on initial load
     const fetchData = async () => {
       const response = await supabase.from("Events").select("*");
-      console.log(response);
+     // console.log(response);
       //print data
       setData(response.data);
     };
     fetchData();
   }, []);
 
-
-const onMessageSend = async () => {
-    const response = await supabase.from('posts').insert({
-      user: "James Landay",
-      timestamp: "now",
-      text: input
-    });
-  }
 
   return (<GluestackUIProvider config={config}>
   <View style={styles.main}>
@@ -123,7 +144,21 @@ const onMessageSend = async () => {
       </SelectPortal>
     </Select>
 
-     <TouchableOpacity onPress={() => navigation.navigate("EventDetails")} > 
+{/* 
+    <Button
+                bg={GREEN}
+                action="primary"
+                onPress={() => {
+                  setShowAlertDialog(false);
+                  setShowSuccess(true);
+                  setHasRSVPed(true);
+                }}
+              >
+                <ButtonText>Confirm</ButtonText>
+              </Button> */}
+
+    {/* <TouchableOpacity onPress={() => navigation.navigate("EventDetails")} >  */}
+
     <Button
       size="sm"
       borderRadius="10"
@@ -132,10 +167,17 @@ const onMessageSend = async () => {
       bg={GREEN}
       isDisabled={false}
       isFocusVisible={false}
+
+      onPress={() => {
+        setShowAlertDialog(false);
+        setShowSuccess(true);
+        setHasRSVPed(true);
+        navigation.navigate("Post");
+      }}
     >
       <ButtonIcon as={EditIcon} />
     </Button>
-    </TouchableOpacity>
+    {/* </TouchableOpacity> */}
     </View>
     </View>
 
@@ -238,7 +280,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
     backgroundColor: FIGMA_WHITE,
     paddingLeft: 25,
-
   },
 
   box: {
@@ -341,3 +382,5 @@ const styles = StyleSheet.create({
 }
 
 );
+
+export default Board;
