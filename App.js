@@ -47,12 +47,12 @@ function HomeScreen() {
         <Stack.Screen
           name="EventDetails"
           component={EventDetails}
-          options={{ title: "Event Details", headerShown: false }}
+          options={{ title: "Event Details", headerShown: true }}
         />
         <Stack.Screen
           name="Calendar"
           component={Calendar}
-          options={{ title: "Calendar ", headerShown: false }}
+          options={{ title: "Calendar ", headerShown: true }}
         />
       </Stack.Navigator>
     </View>
