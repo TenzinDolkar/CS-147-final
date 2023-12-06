@@ -26,17 +26,24 @@ import { config } from "@gluestack-ui/config"; // Optional if you want to use de
 /* Keep the splash screen visible while we fetch resources */
 SplashScreen.preventAutoHideAsync();
 
-/* This is the home screen used for the navigation system, we'll
- * learn more about in the coming weeks!
- */
+const FIGMA_WHITE = "#F8F7F7";
+const PINK = "#FBC6D0";
+const GREEN = "#387F58";
+const FUSCHIA = "#E45B74";
 
 function HomeScreen() {
   return (
     <View style={styles.container}>
       <Stack.Navigator
         initialRouteName="Home"
-        screenOptions={{ headerShown: false, headerMode: "none" }}
-        options={{ headerShown: false }}
+        screenOptions={{ 
+          headerShown: false, 
+          headerMode: "none", 
+          headerStyle: {
+            backgroundColor: PINK,
+          },
+          headerTintColor: GREEN,}}
+          options={{ headerShown: false }}
       >
         <Stack.Screen
           name="Home"
@@ -62,7 +69,12 @@ function HomeScreen() {
 function ChatScreen() {
   return (
     <View style={styles.container}>
-      <Stack.Navigator initialRouteName="Chat">
+      <Stack.Navigator initialRouteName="Chat"
+      screenOptions={{
+      headerStyle: {
+        backgroundColor: PINK,
+      },
+      headerTintColor: GREEN,}}>
         <Stack.Screen
           name="Chat"
           component={Chat}
@@ -206,17 +218,33 @@ export default function App() {
             //</NavigationContainer>tabBarActiveTintColor: "tomato",
             //tabBarInactiveTintColor: "gray",
           })}
-          options={{ headerShown: false }}
+          options={{ headerShown: false,
+            headerStyle: {
+              backgroundColor: PINK,
+            },
+            headerTintColor: GREEN,}}
         >
           <Tab.Screen
             name="Home"
             component={HomeScreen}
             options={{ headerShown: false }}
           />
-          <Tab.Screen name="Chat" component={ChatScreen} />
-          <Tab.Screen name="Board" component={BoardScreen} />
-          <Tab.Screen name="Connect" component={ConnectScreen} />
-          <Tab.Screen name="Profile" component={ProfileScreen} />
+          <Tab.Screen name="Chat" component={ChatScreen} options={{headerStyle: {
+            backgroundColor: PINK,
+          },
+          headerTintColor: GREEN,}} />
+          <Tab.Screen name="Board" component={BoardScreen} options={{headerStyle: {
+            backgroundColor: PINK,
+          },
+          headerTintColor: GREEN,}} />
+          <Tab.Screen name="Connect" component={ConnectScreen} options={{headerStyle: {
+            backgroundColor: PINK,
+          },
+          headerTintColor: GREEN,}} />
+          <Tab.Screen name="Profile" component={ProfileScreen} options={{headerStyle: {
+            backgroundColor: PINK,
+          },
+          headerTintColor: GREEN,}} />
         </Tab.Navigator>
       </NavigationContainer>
     </View>
