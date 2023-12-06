@@ -15,7 +15,7 @@ import Calendar from "./app/components/calendar";
 import Footer from "./app/components/Footer";
 import EventBody from "./app/components/EventBody";
 
-import Chat from "./app/components/chat";
+import Chat, {ChatHistory} from "./app/components/chat";
 import Board from "./app/components/board";
 import Connect from "./app/components/connect";
 import Profile from "./app/components/profile";
@@ -69,7 +69,7 @@ function HomeScreen() {
 function ChatScreen() {
   return (
     <View style={styles.container}>
-      <Stack.Navigator initialRouteName="Chat"
+      <Stack.Navigator initialRouteName="Chat History"
       screenOptions={{
       headerStyle: {
         backgroundColor: PINK,
@@ -78,6 +78,11 @@ function ChatScreen() {
         <Stack.Screen
           name="Chat"
           component={Chat}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Chat History"
+          component={ChatHistory}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

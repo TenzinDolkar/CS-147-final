@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { StyleSheet, Text, View, ImageBackground, Image, Pressable, Dimensions, TouchableOpacity  } from "react-native";
+import { StyleSheet, Text, View, ImageBackground, Image, Pressable, Dimensions, TouchableOpacity, FlatList  } from "react-native";
 
 import { GluestackUIProvider, Input, InputField, InputSlot, InputIcon, SearchIcon, Button, ButtonText, ButtonIcon, EditIcon, value } from '@gluestack-ui/themed';
 import { config } from "@gluestack-ui/config";
@@ -43,22 +43,73 @@ export default function Chat({ navigation}) {
   );
 }
 
+let messages = [
+  { message: "Hello", sender: "me" },
+];
+
+export function ChatHistory({ navigation}) {
+  return (
+    <View style={styles.container}>
+
+      <View style={styles.titleBar}>
+        <Text style={styles.title}>USERNAME</Text>
+      </View>
+      <View style={styles.main}>
+      <FlatList
+        data={messages}
+        renderItem={renderMessage}
+      >
+      </FlatList>
+      <Button
+                bg={GREEN}
+                action="primary"
+                onPress={() => {
+                  setShowAlertDialog(false);
+                  setShowSuccess(true);
+                  setHasRSVPed(true);
+                }}
+              >
+                <ButtonText>Confirm</ButtonText>
+              </Button>
+      </View>
+
+    </View>
+  );
+}
+
+function renderMessage({ item }) {
+  let isMe = item.sender === "me";
+  return (
+    <View style={isMe ? styles.myMessage : styles.theirMessage}>
+      <Text style={styles.messageText}>{item.message}</Text>
+    </View>
+  );
+}
+
+
+
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
     padding: 24,
+    backgroundColor: "white",
+    borderColor: "black",
   },
   main: {
     flex: 1,
     justifyContent: "center",
     maxWidth: 960,
     marginHorizontal: "auto",
-    width: "90%"
+    width: "90%",
+    borderColor: "black",
+    borderWidth: 1,
   },
   title: {
-    fontSize: 64,
-    fontWeight: "bold",
+    fontSize: 24,
+    fontFamily: "Inter-Bold",
+    color: GREEN
   },
   subtitle: {
     fontSize: 20,
@@ -80,5 +131,21 @@ const styles = StyleSheet.create({
     color: "white",
     backgroundColor: "lightgrey",
     borderRadius: 10
+  },
+  myMessage: {
+    backgroundColor: GREEN,
+    borderRadius: 10,
+    padding: 10,
+    margin: 10,
+    alignSelf: "flex-end",
+    maxWidth: "75%"
+  },
+  theirMessage: {
+    backgroundColor: "lightgrey",
+    borderRadius: 10,
+    padding: 10,
+    margin: 10,
+    alignSelf: "flex-start",
+    maxWidth: "75%"
   },
 });
