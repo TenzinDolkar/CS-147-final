@@ -41,15 +41,6 @@ const FUSCHIA = "#E45B74";
 
 
 const renderComment = ({ item }) => {
-  //console.log(item);
-
-  // let tagColor = null;
-  // // if statements
-  // if (...) {
-  //   tagColor = ...
-  // } else if ...
-
-
   return ( 
     <View id = {item.id} style={styles.container}>
        <View style={styles.imageBox}>
@@ -119,7 +110,7 @@ const renderComment = ({ item }) => {
         <InputSlot pl="$3">
           <InputIcon as={SearchIcon} />
         </InputSlot>
-        <InputField onChange={(e: any) => {
+        <InputField onChange={(e) => {
           setValue(e.nativeEvent.text);
         }} value={value} placeholder="Search all events..." />
       </Input>
@@ -179,7 +170,7 @@ const renderComment = ({ item }) => {
     </Button>
     {/* </TouchableOpacity> */}
     </View>
-    </View>
+    
 
 
     {/* <SafeAreaView style={styles.container}> */}
@@ -189,6 +180,7 @@ const renderComment = ({ item }) => {
         keyExtractor={(item) => item.text}
         style={styles.posts}
       />
+    </View>
 {/* 
       <View style={styles.main}>
         <View style={styles.box}>
@@ -236,7 +228,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 24,
     color: "black",
-    
+    backgroundColor: "white"
   
   },
 
@@ -270,15 +262,15 @@ const styles = StyleSheet.create({
     //height: 20,
     width: "90%",
     flex: 1,
-    marginLeft: 20,
+    margin: 10,
     // justifyContent: "center",
     //maxWidth: 960,
     // marginHorizontal: "auto",
     // borderColor: "blue",
     // borderWidth: 1,
+    backgroundColor: "white",
     flexDirection: "row",
-    justifyContent: "space-evenly",
-    backgroundColor: FIGMA_WHITE,
+    justifyContent: "center",
     paddingLeft: 25,
   },
 
@@ -286,13 +278,13 @@ const styles = StyleSheet.create({
     borderWidth: "2%",
     borderRadius: "10%",
     borderColor: "transparent",
-     width: "80%",
+     width: "90%",
     // height: "55%",
-    margin: 2,
+    margin: 5,
     padding: 2,
     flexDirection: "row",
     justifyContent: "space-between",
-    //backgroundColor: FIGMA_WHITE,
+    backgroundColor: FIGMA_WHITE,
     paddingTop: 10,
     paddingBottom: 10
 
@@ -313,6 +305,10 @@ const styles = StyleSheet.create({
     width: "20%",
     height: "50%",
    // paddingLeft: 10,
+  //  borderColor: "blue",
+  //  borderWidth: 1,
+   justifyContent: "center",
+   alignItems: "center",
   },
 
   eventsImage: {
@@ -320,6 +316,8 @@ const styles = StyleSheet.create({
     aspectRatio: 1,
     width: "15%",
     borderRadius: 50,
+    // borderColor: "blue",
+    // borderWidth: 1,
 
     // borderWidth: "2%",
     // borderColor: "pink",
@@ -344,7 +342,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingTop: 40,
+    margin: 10
   },
 
 
@@ -372,7 +370,9 @@ const styles = StyleSheet.create({
     // },
 
     posts: {
-      marginTop: 12
+      marginTop: 12,
+      backgroundColor: "white",
+      width: "100%",
     }, 
     send: {
       alignItems: 'center',

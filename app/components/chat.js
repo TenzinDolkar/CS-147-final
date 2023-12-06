@@ -2,7 +2,7 @@ import React from 'react';
 
 import { StyleSheet, Text, View, ImageBackground, Image, Pressable, Dimensions, TouchableOpacity, FlatList  } from "react-native";
 
-import { GluestackUIProvider, Input, InputField, InputSlot, InputIcon, SearchIcon, Button, ButtonText, ButtonIcon, EditIcon, value } from '@gluestack-ui/themed';
+import { GluestackUIProvider, Input, InputField, InputSlot, InputIcon, SearchIcon, Button, ButtonText, ButtonIcon, EditIcon, ArrowRightIcon, set } from '@gluestack-ui/themed';
 import { config } from "@gluestack-ui/config";
 import { useState } from "react";
 
@@ -19,6 +19,7 @@ const GREEN = "#387F58";
 const FUSCHIA = "#E45B74";
 
 export default function Chat({ navigation}) {
+  const [value, setValue] = React.useState('');
   return (
     <View style={styles.container}>
 
@@ -48,6 +49,8 @@ let messages = [
 ];
 
 export function ChatHistory({ navigation}) {
+  [messages, setMessages] = useState(messages);
+  [value, setValue] = useState("");
   return (
     <View style={styles.container}>
 
@@ -60,17 +63,26 @@ export function ChatHistory({ navigation}) {
         renderItem={renderMessage}
       >
       </FlatList>
+
+      <View style={styles.messageBar}>
+        <Input size={"sm"} variant={"rounded"} isInvalid={false} isDisabled={false} style={styles.messageInput} >
+          <InputSlot pl="$3">
+          </InputSlot>
+          <InputField onChange={(e) => {
+            setValue(e.nativeEvent.text);
+          }} value={value} placeholder="Write message" />
+        </Input>
       <Button
                 bg={GREEN}
                 action="primary"
+                style={styles.button}
                 onPress={() => {
-                  setShowAlertDialog(false);
-                  setShowSuccess(true);
-                  setHasRSVPed(true);
+                  setMessages([...messages, { message: value, sender: "me" }]);
                 }}
               >
-                <ButtonText>Confirm</ButtonText>
+                <ButtonIcon as={ArrowRightIcon} />
               </Button>
+      </View>
       </View>
 
     </View>
@@ -94,7 +106,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     padding: 24,
-    backgroundColor: "white",
     borderColor: "black",
   },
   main: {
@@ -102,14 +113,19 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     maxWidth: 960,
     marginHorizontal: "auto",
-    width: "90%",
-    borderColor: "black",
-    borderWidth: 1,
+    width: "100%",
+  },
+  titleBar: {
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 10,
+    backgroundColor: PINK
   },
   title: {
     fontSize: 24,
     fontFamily: "Inter-Bold",
-    color: GREEN
+    color: GREEN,
   },
   subtitle: {
     fontSize: 20,
@@ -147,5 +163,20 @@ const styles = StyleSheet.create({
     margin: 10,
     alignSelf: "flex-start",
     maxWidth: "75%"
+  },
+  messageBar: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    width: "100%",
+    padding: 5,
+  },
+  messageInput: {
+    width: "80%",
+    margin: 5,
+    flex: 1,
+  },
+  button: {
+    width: "20%",
   },
 });
