@@ -72,6 +72,7 @@ const EventBody = ({ navigation }) => {
             borderRadius="$none"
             source={require("../../assets/Events/walks.png")}
             style={styles.eventImage}
+            alt="A mother walking on a trail with her family."
           />
           <View style={styles.eventSummary}>
             <Text style={styles.eventTitle}>Moms Who Walk!</Text>

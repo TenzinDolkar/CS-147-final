@@ -147,7 +147,7 @@ export default function App() {
     "Sydney-Bold": require("./assets/Fonts/Sydney-Serial-Bold.ttf"),
     Corben: require("./assets/Fonts/Corben-Regular.ttf"),
     "Corben-Bold": require("./assets/Fonts/Corben-Bold.ttf"),
-    Inter: require("./assets/Fonts/Inter-Regular.ttf"),
+    "Inter-Regular": require("./assets/Fonts/Inter-Regular.ttf"),
     "Inter-Bold": require("./assets/Fonts/Inter-Bold.ttf"),
     "Inter-Black": require("./assets/Fonts/Inter-Black.ttf"),
     "Inter-ExtraBold": require("./assets/Fonts/Inter-ExtraBold.ttf"),
