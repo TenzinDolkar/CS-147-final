@@ -69,7 +69,7 @@ function HomeScreen() {
 function ChatScreen() {
   return (
     <View style={styles.container}>
-      <Stack.Navigator initialRouteName="Chat History"
+      <Stack.Navigator initialRouteName="Chat"
       screenOptions={{
       headerStyle: {
         backgroundColor: PINK,
