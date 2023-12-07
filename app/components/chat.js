@@ -54,9 +54,9 @@ export function ChatHistory({ navigation}) {
   return (
     <View style={styles.container}>
 
-      <View style={styles.titleBar}>
+      {/* <View style={styles.titleBar}>
         <Text style={styles.title}>USERNAME</Text>
-      </View>
+      </View> */}
       <View style={styles.main}>
       <FlatList
         data={messages}
@@ -65,6 +65,15 @@ export function ChatHistory({ navigation}) {
       </FlatList>
 
       <View style={styles.messageBar}>
+        <Button
+          action="primary"
+          style={styles.button}
+        >
+          <Image source={require("../../assets/Icons/camera.png")} />
+        </Button>
+
+
+
         <Input size={"sm"} variant={"rounded"} isInvalid={false} isDisabled={false} style={styles.messageInput} >
           <InputSlot pl="$3">
           </InputSlot>
@@ -73,14 +82,13 @@ export function ChatHistory({ navigation}) {
           }} value={value} placeholder="Write message" />
         </Input>
       <Button
-                bg={GREEN}
                 action="primary"
                 style={styles.button}
                 onPress={() => {
                   setMessages([...messages, { message: value, sender: "me" }]);
                 }}
               >
-                <ButtonIcon as={ArrowRightIcon} />
+                <Image source={require("../../assets/Icons/send.png")} />
               </Button>
       </View>
       </View>
@@ -178,5 +186,6 @@ const styles = StyleSheet.create({
   },
   button: {
     width: "20%",
+    backgroundColor: "transparent",
   },
 });
