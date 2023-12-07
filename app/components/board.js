@@ -145,7 +145,7 @@ const Board = ({ navigation }) => {
                 setValue(e.nativeEvent.text);
               }}
               value={value}
-              placeholder="Search all events..."
+              placeholder="Search all posts..."
             />
           </Input>
         </View>
