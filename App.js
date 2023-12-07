@@ -15,7 +15,9 @@ import Calendar from "./app/components/calendar";
 import Footer from "./app/components/Footer";
 import EventBody from "./app/components/EventBody";
 
-import Chat, {ChatHistory} from "./app/components/chat";
+import profileDetail from "./app/components/profileDetail.js";
+
+import Chat, { ChatHistory } from "./app/components/chat";
 import Board from "./app/components/board";
 import Connect from "./app/components/connect";
 import Profile from "./app/components/profile";
@@ -36,14 +38,15 @@ function HomeScreen() {
     <View style={styles.container}>
       <Stack.Navigator
         initialRouteName="Home"
-        screenOptions={{ 
-          headerShown: false, 
-          headerMode: "none", 
+        screenOptions={{
+          headerShown: false,
+          headerMode: "none",
           headerStyle: {
             backgroundColor: PINK,
           },
-          headerTintColor: GREEN,}}
-          options={{ headerShown: false }}
+          headerTintColor: GREEN,
+        }}
+        options={{ headerShown: false }}
       >
         <Stack.Screen
           name="Home"
@@ -69,12 +72,15 @@ function HomeScreen() {
 function ChatScreen() {
   return (
     <View style={styles.container}>
-      <Stack.Navigator initialRouteName="Chat History"
-      screenOptions={{
-      headerStyle: {
-        backgroundColor: PINK,
-      },
-      headerTintColor: GREEN,}}>
+      <Stack.Navigator
+        initialRouteName="Chat History"
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: PINK,
+          },
+          headerTintColor: GREEN,
+        }}
+      >
         <Stack.Screen
           name="Chat"
           component={Chat}
@@ -116,6 +122,12 @@ function ConnectScreen() {
         <Stack.Screen
           name="Connect"
           component={Connect}
+          options={{ headerShown: false }}
+        />
+
+        <Stack.Screen
+          name="profileDetail"
+          component={profileDetail}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
@@ -223,33 +235,59 @@ export default function App() {
             //</NavigationContainer>tabBarActiveTintColor: "tomato",
             //tabBarInactiveTintColor: "gray",
           })}
-          options={{ headerShown: false,
+          options={{
+            headerShown: false,
             headerStyle: {
               backgroundColor: PINK,
             },
-            headerTintColor: GREEN,}}
+            headerTintColor: GREEN,
+          }}
         >
           <Tab.Screen
             name="Home"
             component={HomeScreen}
             options={{ headerShown: false }}
           />
-          <Tab.Screen name="Chat" component={ChatScreen} options={{headerStyle: {
-            backgroundColor: PINK,
-          },
-          headerTintColor: GREEN,}} />
-          <Tab.Screen name="Board" component={BoardScreen} options={{headerStyle: {
-            backgroundColor: PINK,
-          },
-          headerTintColor: GREEN,}} />
-          <Tab.Screen name="Connect" component={ConnectScreen} options={{headerStyle: {
-            backgroundColor: PINK,
-          },
-          headerTintColor: GREEN,}} />
-          <Tab.Screen name="Profile" component={ProfileScreen} options={{headerStyle: {
-            backgroundColor: PINK,
-          },
-          headerTintColor: GREEN,}} />
+          <Tab.Screen
+            name="Chat"
+            component={ChatScreen}
+            options={{
+              headerStyle: {
+                backgroundColor: PINK,
+              },
+              headerTintColor: GREEN,
+            }}
+          />
+          <Tab.Screen
+            name="Board"
+            component={BoardScreen}
+            options={{
+              headerStyle: {
+                backgroundColor: PINK,
+              },
+              headerTintColor: GREEN,
+            }}
+          />
+          <Tab.Screen
+            name="Connect"
+            component={ConnectScreen}
+            options={{
+              headerStyle: {
+                backgroundColor: PINK,
+              },
+              headerTintColor: GREEN,
+            }}
+          />
+          <Tab.Screen
+            name="Profile"
+            component={ProfileScreen}
+            options={{
+              headerStyle: {
+                backgroundColor: PINK,
+              },
+              headerTintColor: GREEN,
+            }}
+          />
         </Tab.Navigator>
       </NavigationContainer>
     </View>

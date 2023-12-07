@@ -55,7 +55,7 @@ const PINK = "#FBC6D0";
 const GREEN = "#387F58";
 const FUSCHIA = "#E45B74";
 //usestate that stores the text inside the textINput , when they press post, takes the state
-const Post = () => {
+const Post = ({ navigation }) => {
   const [data, setData] = useState(null);
   const [input, setInput] = useState("");
   const [showAlertDialog, setShowAlertDialog] = React.useState(false);
@@ -130,6 +130,7 @@ const Post = () => {
           setShowSuccess(true);
           setHasRSVPed(true);
           onMessageSend();
+          navigation.navigate("Board");
         }}
       >
         <ButtonText>Post</ButtonText>
