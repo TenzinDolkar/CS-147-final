@@ -14,7 +14,7 @@ import {
   Button,
   ButtonText,
   ButtonIcon,
-} from '@gluestack-ui/themed';
+} from "@gluestack-ui/themed";
 
 import {
   AlertDialog,
@@ -33,67 +33,66 @@ import Icons from "../../assets/Icons";
 
 import { config } from "@gluestack-ui/config";
 
-const {
-  height: windowHeight,
-  width: windowWidth
-} = Dimensions.get("window");
+const { height: windowHeight, width: windowWidth } = Dimensions.get("window");
 const FIGMA_WHITE = "#F8F7F7";
 const PINK = "#FBC6D0";
 const GREEN = "#387F58";
 const FUSCHIA = "#E45B74";
 
-
-export default function Profile({ navigation}) {
+export default function Profile({ navigation }) {
   const [showConstruction, setShowConstruction] = useState(false);
   return (
     <GluestackUIProvider config={config}>
-    <View style={styles.container}>
-      <View style={styles.main}>
-        
-      <Avatar bgColor="$rose200" size="2xl" style={styles.profilePic}>
-        {/* User is imported from 'lucide-react-native' */}
-        {/* <Icon as={Icons.profileFilled.nav} color="white" size="lg" /> */}
-        <Image source={require("../../assets/Icons/Profile_Icon.png")} />
-      </Avatar>
-      
-        <Text style={styles.title}>Profile</Text>
-        <View style={styles.profileContainer}>
-          <Text style={styles.text}>This is your place to share a little about yourself! Feel free to write about who you are, your hobbies, your kids, or anything!</Text>
-          <Text style={styles.text}>Tell us about yourself to make it easier to discover your kith and kin.</Text>
-        </View>
-        <View style={styles.buttonBar}>
+      <View style={styles.container}>
+        <View style={styles.main}>
+          <Avatar bgColor="$rose200" size="2xl" style={styles.profilePic}>
+            <Image source={require("../../assets/Icons/Profile_Icon.png")} />
+          </Avatar>
+
+          <Text style={styles.title}>Profile</Text>
+          <View style={styles.profileContainer}>
+            <Text style={styles.text}>
+              This is your place to share a little about yourself! Feel free to
+              write about who you are, your hobbies, your kids, or anything!
+            </Text>
+            <Text style={styles.text}>
+              Tell us about yourself to make it easier to discover your kith and
+              kin.
+            </Text>
+          </View>
+          <View style={styles.buttonBar}>
+            <Button
+              action="secondary"
+              size="md"
+              borderRadius="$none"
+              isDisabled={false}
+              onPress={() => setShowConstruction(true)}
+              style={styles.button}
+            >
+              <ButtonText color={GREEN}>Edit</ButtonText>
+            </Button>
+            <Button
+              action="secondary"
+              size="md"
+              borderRadius="$none"
+              isDisabled={false}
+              onPress={() => setShowConstruction(true)}
+              style={styles.button}
+            >
+              <ButtonText color={GREEN}>Settings</ButtonText>
+            </Button>
+            <Button
+              action="secondary"
+              size="md"
+              borderRadius="$none"
+              isDisabled={false}
+              onPress={() => setShowConstruction(true)}
+              style={styles.button}
+            >
+              <ButtonText color={GREEN}>. . .</ButtonText>
+            </Button>
+          </View>
           <Button
-            action="secondary"
-            size="md"
-            borderRadius="$none"
-            isDisabled={false}
-            onPress={() => setShowConstruction(true)}
-            style={styles.button}
-          >
-            <ButtonText color={GREEN}>Edit</ButtonText>
-          </Button>
-          <Button
-            action="secondary"
-            size="md"
-            borderRadius="$none"
-            isDisabled={false}
-            onPress={() => setShowConstruction(true)}
-            style={styles.button}
-          >
-            <ButtonText color={GREEN}>Settings</ButtonText>
-          </Button>
-          <Button
-            action="secondary"
-            size="md"
-            borderRadius="$none"
-            isDisabled={false}
-            onPress={() => setShowConstruction(true)}
-            style={styles.button}
-          >
-            <ButtonText color={GREEN}>. . .</ButtonText>
-          </Button>
-        </View>
-        <Button
             action="secondary"
             size="md"
             borderRadius="$none"
@@ -104,35 +103,29 @@ export default function Profile({ navigation}) {
           >
             <ButtonText color={GREEN}>See my calendar</ButtonText>
           </Button>
+        </View>
+
+        <AlertDialog
+          isOpen={showConstruction}
+          onClose={() => {
+            setShowConstruction(false);
+          }}
+        >
+          <AlertDialogBackdrop />
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <Heading size="lg">Under Construction</Heading>
+              <AlertDialogCloseButton>
+                <Icon as={CloseIcon} />
+              </AlertDialogCloseButton>
+            </AlertDialogHeader>
+            <AlertDialogBody>
+              <Text size="sm">This page is still under construction.</Text>
+            </AlertDialogBody>
+            <AlertDialogFooter></AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
       </View>
-
-      <AlertDialog
-        isOpen={showConstruction}
-        onClose={() => {
-          setShowConstruction(false);
-        }}
-      >
-        <AlertDialogBackdrop />
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <Heading size="lg">Under Construction</Heading>
-            <AlertDialogCloseButton>
-              <Icon as={CloseIcon} />
-            </AlertDialogCloseButton>
-          </AlertDialogHeader>
-          <AlertDialogBody>
-            <Text size="sm">This page is still under construction.</Text>
-          </AlertDialogBody>
-          <AlertDialogFooter>
-            
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
-
-
-
-
-    </View>
     </GluestackUIProvider>
   );
 }
@@ -141,14 +134,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    // alignContent: "center",
     padding: 24,
-    backgroundColor: "white"
+    backgroundColor: "white",
   },
   main: {
     flex: 1,
     justifyContent: "center",
-    // maxWidth: 960,
     width: "90%",
     alignItems: "center",
   },
@@ -156,15 +147,11 @@ const styles = StyleSheet.create({
     padding: 10,
     margin: 10,
     alignSelf: "center",
-    
-
   },
   title: {
     fontSize: 20,
     fontWeight: "bold",
     textAlign: "center",
-    // borderColor: "black",
-    // borderWidth: 1,
     color: FUSCHIA,
     fontFamily: "Inter-Medium",
   },
@@ -177,18 +164,13 @@ const styles = StyleSheet.create({
   },
   profileContainer: {
     width: "100%",
-    // alignItems: "center",
     justifyContent: "center",
     padding: 10,
     backgroundColor: FIGMA_WHITE,
     borderRadius: 10,
-    // borderColor: "black",
-    // borderWidth: 1,
     margin: 10,
   },
   button: {
-    // width: "10%",
-    // height: "80%",
     borderRadius: 10,
     justifyContent: "center",
     alignItems: "center",
@@ -200,10 +182,9 @@ const styles = StyleSheet.create({
     shadowOffset: {
       height: 2,
       width: 2,
-    }
+    },
   },
   buttonBar: {
-    // width: "100%",
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",

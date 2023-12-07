@@ -72,12 +72,15 @@ function HomeScreen() {
 function ChatScreen() {
   return (
     <View style={styles.container}>
-      <Stack.Navigator initialRouteName="Chat History"
-      screenOptions={{
-      headerStyle: {
-        backgroundColor: PINK,
-      },
-      headerTintColor: GREEN,}}>
+      <Stack.Navigator
+        initialRouteName="Chat History"
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: PINK,
+          },
+          headerTintColor: GREEN,
+        }}
+      >
         <Stack.Screen
           name="Chat"
           component={Chat}
@@ -207,7 +210,6 @@ export default function App() {
           // screenOptions={{
           //   headerShown: false,
           // }}
-
           //for every workflow in your tab navigator, if there's more than one page, you want to
           //pass in a stack as the component
 

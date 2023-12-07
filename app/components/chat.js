@@ -1,98 +1,123 @@
-import React from 'react';
+import React from "react";
 
-import { StyleSheet, Text, View, ImageBackground, Image, Pressable, Dimensions, TouchableOpacity, FlatList  } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  ImageBackground,
+  Image,
+  Pressable,
+  Dimensions,
+  TouchableOpacity,
+  FlatList,
+} from "react-native";
 
-import { GluestackUIProvider, Input, InputField, InputSlot, InputIcon, SearchIcon, Button, ButtonText, ButtonIcon, EditIcon, ArrowRightIcon, set } from '@gluestack-ui/themed';
+import {
+  GluestackUIProvider,
+  Input,
+  InputField,
+  InputSlot,
+  InputIcon,
+  SearchIcon,
+  Button,
+  ButtonText,
+  ButtonIcon,
+  EditIcon,
+  ArrowRightIcon,
+  set,
+} from "@gluestack-ui/themed";
 import { config } from "@gluestack-ui/config";
 import { useState } from "react";
 
-
 import { Link } from "expo-router";
 
-const {
-  height: windowHeight,
-  width: windowWidth
-} = Dimensions.get("window");
+const { height: windowHeight, width: windowWidth } = Dimensions.get("window");
 const FIGMA_WHITE = "#F8F7F7";
 const PINK = "#FBC6D0";
 const GREEN = "#387F58";
 const FUSCHIA = "#E45B74";
 
-export default function Chat({ navigation}) {
-  const [value, setValue] = React.useState('');
+export default function Chat({ navigation }) {
+  const [value, setValue] = React.useState("");
   return (
     <View style={styles.container}>
-
       <View style={styles.searchBar}>
-        <Input size={"sm"} variant={"rounded"} isInvalid={false} isDisabled={false} style={styles.searchInput}>
+        <Input
+          size={"sm"}
+          variant={"rounded"}
+          isInvalid={false}
+          isDisabled={false}
+          style={styles.searchInput}
+        >
           <InputSlot pl="$3">
             <InputIcon as={SearchIcon} />
           </InputSlot>
-          <InputField onChange={(e: any) => {
-            setValue(e.nativeEvent.text);
-          }} value={value} placeholder="Search messages..." />
+          <InputField
+            onChange={(e) => {
+              setValue(e.nativeEvent.text);
+            }}
+            value={value}
+            placeholder="Search messages..."
+          />
         </Input>
       </View>
 
-
       <View style={styles.main}>
         <Text style={styles.subtitle}>You have no messages.</Text>
-        <Text style={styles.text}>Try sending a message to another member to get started! Your chat history will appear here.</Text>
-        {/* <Text style={styles.title}>Chat</Text> */}
+        <Text style={styles.text}>
+          Try sending a message to another member to get started! Your chat
+          history will appear here.
+        </Text>
       </View>
     </View>
   );
 }
 
-let messages = [
-  { message: "Hello", sender: "me" },
-];
+let messages = [{ message: "Hello", sender: "me" }];
 
-export function ChatHistory({ navigation}) {
+export function ChatHistory({ navigation }) {
   [messages, setMessages] = useState(messages);
   [value, setValue] = useState("");
   return (
     <View style={styles.container}>
-
       {/* <View style={styles.titleBar}>
         <Text style={styles.title}>USERNAME</Text>
       </View> */}
       <View style={styles.main}>
-      <FlatList
-        data={messages}
-        renderItem={renderMessage}
-      >
-      </FlatList>
+        <FlatList data={messages} renderItem={renderMessage}></FlatList>
 
-      <View style={styles.messageBar}>
-        <Button
-          action="primary"
-          style={styles.button}
-        >
-          <Image source={require("../../assets/Icons/camera.png")} />
-        </Button>
+        <View style={styles.messageBar}>
+          <Button action="primary" style={styles.button}>
+            <Image source={require("../../assets/Icons/camera.png")} />
+          </Button>
 
-
-
-        <Input size={"sm"} variant={"rounded"} isInvalid={false} isDisabled={false} style={styles.messageInput} >
-          <InputSlot pl="$3">
-          </InputSlot>
-          <InputField onChange={(e) => {
-            setValue(e.nativeEvent.text);
-          }} value={value} placeholder="Write message" />
-        </Input>
-      <Button
-                action="primary"
-                style={styles.button}
-                onPress={() => {
-                  setMessages([...messages, { message: value, sender: "me" }]);
-                }}
-              >
-                <Image source={require("../../assets/Icons/send.png")} />
-              </Button>
+          <Input
+            size={"sm"}
+            variant={"rounded"}
+            isInvalid={false}
+            isDisabled={false}
+            style={styles.messageInput}
+          >
+            <InputSlot pl="$3"></InputSlot>
+            <InputField
+              onChange={(e) => {
+                setValue(e.nativeEvent.text);
+              }}
+              value={value}
+              placeholder="Write message"
+            />
+          </Input>
+          <Button
+            action="primary"
+            style={styles.button}
+            onPress={() => {
+              setMessages([...messages, { message: value, sender: "me" }]);
+            }}
+          >
+            <Image source={require("../../assets/Icons/send.png")} />
+          </Button>
+        </View>
       </View>
-      </View>
-
     </View>
   );
 }
@@ -105,9 +130,6 @@ function renderMessage({ item }) {
     </View>
   );
 }
-
-
-
 
 const styles = StyleSheet.create({
   container: {
@@ -128,7 +150,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     padding: 10,
-    backgroundColor: PINK
+    backgroundColor: PINK,
   },
   title: {
     fontSize: 24,
@@ -147,14 +169,14 @@ const styles = StyleSheet.create({
   },
   searchBar: {
     width: "90%",
-    height: "5%"
+    height: "5%",
   },
   searchInput: {
     fontSize: 14,
     fontFamily: "Inter-Medium",
     color: "white",
     backgroundColor: "lightgrey",
-    borderRadius: 10
+    borderRadius: 10,
   },
   myMessage: {
     backgroundColor: GREEN,
@@ -162,7 +184,7 @@ const styles = StyleSheet.create({
     padding: 10,
     margin: 10,
     alignSelf: "flex-end",
-    maxWidth: "75%"
+    maxWidth: "75%",
   },
   theirMessage: {
     backgroundColor: "lightgrey",
@@ -170,7 +192,7 @@ const styles = StyleSheet.create({
     padding: 10,
     margin: 10,
     alignSelf: "flex-start",
-    maxWidth: "75%"
+    maxWidth: "75%",
   },
   messageBar: {
     flexDirection: "row",

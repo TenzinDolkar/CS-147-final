@@ -73,86 +73,64 @@ const Post = ({ navigation }) => {
     });
   };
 
-  // useEffect(() => {
-  //   // Fetch data on initial load
-  //   const fetchData = async () => {
-  //     const response = await supabase.from("Events").select("*");
-  //     console.log(response);
-  //     //print data
-  //     setData(response.data);
-  //   };
-  //   fetchData();
-  // }, []);
-
   return (
     <GluestackUIProvider config={config}>
       <View style={styles.container}>
         <View style={styles.main}>
-        <Text style={styles.title}>Create a post</Text>
-        <View style={styles.inputBlock}>
-          <Text style={styles.text}>Title</Text>
-          <TextInput
-            value={title}
-            placeholder="Add a title"
-            onChangeText={(text) => {
-              setTitle(text);
-            }}
-            style={styles.titleInput}
-          />
+          <Text style={styles.title}>Create a post</Text>
+          <View style={styles.inputBlock}>
+            <Text style={styles.text}>Title</Text>
+            <TextInput
+              value={title}
+              placeholder="Add a title"
+              onChangeText={(text) => {
+                setTitle(text);
+              }}
+              style={styles.titleInput}
+            />
+          </View>
+
+          <View style={styles.inputBlock}>
+            <Text style={styles.text}>Tags</Text>
+            <TextInput
+              style={styles.titleInput}
+              placeholder="Add tags"
+              onChangeText={(text) => {
+                setTag(text);
+              }}
+            />
+          </View>
+
+          <View style={styles.inputBlock}>
+            <Text style={styles.text}>Body</Text>
+            <TextInput
+              placeholder="Add a description"
+              onChangeText={(text) => {
+                setDescription(text);
+              }}
+              multiline={true}
+              style={{
+                height: 200,
+                width: 300,
+                borderRadius: 10,
+                backgroundColor: "lightgrey",
+                padding: 5,
+              }}
+            />
+          </View>
         </View>
 
-        <View style={styles.inputBlock}>
-          <Text style={styles.text}>Tags</Text>
-          <TextInput style={styles.titleInput}
-            placeholder="Add tags" 
-            onChangeText={(text) => {
-              setTag(text);
-            }}
-            
-          />
-        </View>
-      
-
-      <View style={styles.inputBlock}>
-        <Text style={styles.text}>Body</Text>
-        <TextInput 
-          placeholder="Add a description"
-          onChangeText={(text) => {
-            setDescription(text);
+        <Button
+          bg={GREEN}
+          action="primary"
+          style={styles.button}
+          onPress={() => {
+            onMessageSend();
+            navigation.navigate("Board");
           }}
-          multiline={true}
-          style={{
-            height: 200,
-            width: 300,
-            borderRadius: 10,
-            backgroundColor: "lightgrey",
-            padding: 5,
-          }} />
-      </View>
-      </View>
-
-      {/* <View>
-        <TextInput
-          value={text}
-          //style={{ fontSize: 42, color: "steelblue" }}
-          //placeholder="Type here..."
-          onChangeText={(text) => {
-            setText(text);
-          }}
-        />
-      </View> */}
-
-      <Button
-        bg={GREEN}
-        action="primary"
-        style={styles.button}
-        onPress={() => {
-          onMessageSend();
-          navigation.navigate("Board");
-        }}
-      >
-        <ButtonText>Post</ButtonText>
-      </Button>
+        >
+          <ButtonText>Post</ButtonText>
+        </Button>
       </View>
     </GluestackUIProvider>
   );

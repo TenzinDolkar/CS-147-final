@@ -35,7 +35,6 @@ import {
   CloseIcon,
   ButtonGroup,
 } from "@gluestack-ui/themed";
-// import { GluestackUIProvider, Button, ButtonText } from "@gluestack-ui/themed";
 import { config } from "@gluestack-ui/config";
 import {
   View,
@@ -48,9 +47,6 @@ import {
 import Profiles from "../../assets/Profiles";
 import Icons from "../../assets/Icons";
 import { useState } from "react";
-//import { Link, Stack } from "expo-router";
-
-//import supabase from "./env";
 
 const { height: windowHeight, width: windowWidth } = Dimensions.get("window");
 const FIGMA_WHITE = "#F8F7F7";
@@ -282,7 +278,6 @@ const styles = StyleSheet.create({
     height: "10%",
     flexDirection: "row",
     justifyContent: "space-evenly",
-    // alignItems: "center",
     borderRadius: 10,
     shadowColor: "grey",
     shadowOpacity: 0.2,
@@ -294,7 +289,6 @@ const styles = StyleSheet.create({
   },
 
   button: {
-    // width: "10%",
     height: "80%",
     borderRadius: 10,
     justifyContent: "center",
