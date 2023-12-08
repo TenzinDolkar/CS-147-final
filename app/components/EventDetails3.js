@@ -47,7 +47,7 @@ import {
 import Profiles from "../../assets/Profiles";
 import Icons from "../../assets/Icons";
 import { useState } from "react";
-import allEventDetails from "../../";
+import allEventDetails from "expo/AppEntry";
 
 const { height: windowHeight, width: windowWidth } = Dimensions.get("window");
 const FIGMA_WHITE = "#F8F7F7";
@@ -55,7 +55,7 @@ const PINK = "#FBC6D0";
 const GREEN = "#387F58";
 const FUSCHIA = "#E45B74";
 
-const EventBody = ({ navigation }) => {
+const EventBody3 = ({ navigation }) => {
   const [showAlertDialog, setShowAlertDialog] = React.useState(false);
   const [showSuccess, setShowSuccess] = React.useState(false);
   const [hasRSVPed, setHasRSVPed] = React.useState(false);
@@ -67,31 +67,29 @@ const EventBody = ({ navigation }) => {
           <Image
             size="md"
             borderRadius="$none"
-            source={require("../../assets/Events/walks.png")}
+            source={require("../../assets/Events/coffee.png")}
             style={styles.eventImage}
             alt="A mother walking on a trail with her family."
           />
           <View style={styles.eventSummary}>
-            <Text style={styles.eventTitle}>Moms Who Walk!</Text>
-            <Text style={styles.eventBody}>Creator: TayTay23</Text>
-            <Text style={styles.eventBody}>Date: 11/11/23 @ 2:00PM</Text>
-            <Text style={styles.eventBody}>Location: Willow Park</Text>
+            <Text style={styles.eventTitle}>Monthly Coffee & Chat</Text>
+            <Text style={styles.eventBody}>Creator: JenniferLopez</Text>
+            <Text style={styles.eventBody}>Date: 11/14/23 </Text>
+            <Text style={styles.eventBody}>Location: Tualatin</Text>
           </View>
         </View>
 
         <View style={styles.eventDescription}>
           <Text style={styles.eventTitle}>Description</Text>
-          <Text style={styles.eventBody}>
-            Join us at beautiful Willow Park next Saturday for our Moms Who Walk
-            event, located in the heart of our vibrant community. This
-            empowering gathering is perfect for mothers of all ages and stages,
-            where you can enjoy a refreshing walk, exchange parenting tips, and
-            connect with other moms who understand the journey of motherhood.
-            We'll provide a welcoming atmosphere, complete with water stations
-            and shaded rest areas.
-            {"\n"}Whether you're a seasoned mom or a newbie, come take a step
-            towards fitness and friendship at "Moms Who Walk" – because the
-            journey of motherhood is better when shared!
+          <Text style={styles.eventBody2}>
+            Looking for a laid-back and inviting atmosphere to connect with
+            others? Join us for our "Monthly Coffee & Chat" event where the
+            aroma of freshly brewed coffee blends seamlessly with the warmth of
+            friendly conversations. 🎉 Why Attend? "Monthly Coffee & Chat" is
+            more than an event; it's a chance to unwind, meet new people, and
+            foster connections within the community. Whether you're a coffee
+            aficionado or just looking for some friendly faces, this monthly
+            gathering is for you!
           </Text>
         </View>
         <View style={styles.buttonsBar}>
@@ -254,6 +252,12 @@ const styles = StyleSheet.create({
     fontFamily: "Inter-Regular",
   },
 
+  eventBody2: {
+    fontSize: 15,
+    fontFamily: "Inter-Regular",
+    paddingTop: 20,
+  },
+
   eventDescription: {
     border: "1px solid black",
     flex: 4,
@@ -306,4 +310,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default EventBody;
+export default EventBody3;

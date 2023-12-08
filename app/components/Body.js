@@ -73,6 +73,7 @@ const Body = ({navigation}) => {
         <ButtonIcon as={EditIcon} />
       </Button>
       </View>
+{/* //pass in diff params for each box clicked, create a js object with all info needed (description)  */}
 
 
       <TouchableOpacity onPress={() => navigation.navigate("EventDetails")} style={styles.box}>
@@ -93,7 +94,7 @@ const Body = ({navigation}) => {
       {/* </View> */}
       </TouchableOpacity>
 
-      <View style={styles.box}>
+      <TouchableOpacity onPress={() => navigation.navigate("EventDetails2")} style={styles.box}>
         <View style={styles.halfBox}>
           <View style={styles.eventHeader}>
             <Text style={styles.eventTitle}>Katy’s Grief Workshop</Text>
@@ -107,9 +108,11 @@ const Body = ({navigation}) => {
         <View>
         <Image source={require('../../assets/Events/grief.png')} style={styles.eventsImage} />
         </View>
-      </View>
+      </TouchableOpacity>
 
-      <View style={styles.box}>
+      <TouchableOpacity onPress={() => navigation.navigate("EventDetails3")} style={styles.box}>
+
+      
         <View style={styles.halfBox}>
           <View style={styles.eventHeader}>
             <Text style={styles.eventTitle}>Monthly Coffee & Chat</Text>
@@ -122,7 +125,10 @@ const Body = ({navigation}) => {
         <View>
           <Image source={require('../../assets/Events/coffee.png')} style={styles.eventsImage} />
         </View>
-      </View>
+     
+
+      </TouchableOpacity>
+
     </View>
   </GluestackUIProvider>;
 };

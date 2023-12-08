@@ -205,7 +205,11 @@ const Connect = ({ navigation }) => {
         </View>
 
         {/* <TouchableOpacity onPress={() => navigation.navigate("EventDetails")} style={styles.box}>   */}
-        <View style={styles.box}>
+
+        <TouchableOpacity
+          onPress={() => navigation.navigate("profileDetail2")}
+          style={styles.box}
+        >
           <View>
             <Image
               source={require("../../assets/Profiles/zeinab.jpg")}
@@ -214,16 +218,19 @@ const Connect = ({ navigation }) => {
           </View>
           <View style={styles.halfBox}>
             <View style={styles.eventHeader}>
-              <Text style={styles.name}>Zeinab Ahmed</Text>
+              <Text style={styles.name}>Omar Ahmed</Text>
             </View>
             <View>
               <Text style={styles.location}>Redwood City, CA</Text>
               <Text style={styles.miles}>1.1 mi</Text>
             </View>
           </View>
-        </View>
+        </TouchableOpacity>
 
-        <View style={styles.box}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("profileDetail3")}
+          style={styles.box}
+        >
           <View>
             <Image
               source={require("../../assets/Profiles/kofi.jpg")}
@@ -239,9 +246,12 @@ const Connect = ({ navigation }) => {
               <Text style={styles.miles}>15 mi</Text>
             </View>
           </View>
-        </View>
+        </TouchableOpacity>
 
-        <View style={styles.box}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("profileDetail")}
+          style={styles.box}
+        >
           <View>
             <Image
               source={require("../../assets/Profiles/ruth.jpg")}
@@ -249,23 +259,21 @@ const Connect = ({ navigation }) => {
             />
           </View>
 
-          <TouchableOpacity
-            onPress={() => navigation.navigate("profileDetail")}
-            style={styles.box}
-          >
-            <View style={styles.halfBox}>
-              <View style={styles.eventHeader}>
-                <Text style={styles.name}>Ruth Ella Johnson</Text>
-              </View>
-              <View>
-                <Text style={styles.location}>San Francisco, CA</Text>
-                <Text style={styles.miles}>20 mi</Text>
-              </View>
+          <View style={styles.halfBox}>
+            <View style={styles.eventHeader}>
+              <Text style={styles.name}>Ruth Ella Johnson</Text>
             </View>
-          </TouchableOpacity>
-        </View>
+            <View>
+              <Text style={styles.location}>San Francisco, CA</Text>
+              <Text style={styles.miles}>20 mi</Text>
+            </View>
+          </View>
+        </TouchableOpacity>
 
-        <View style={styles.box}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("profileDetail4")}
+          style={styles.box}
+        >
           <View>
             <Image
               source={require("../../assets/Profiles/raffy.jpg")}
@@ -281,8 +289,7 @@ const Connect = ({ navigation }) => {
               <Text style={styles.miles}>21 mi</Text>
             </View>
           </View>
-        </View>
-        {/* </TouchableOpacity> */}
+        </TouchableOpacity>
       </View>
     </GluestackUIProvider>
   );

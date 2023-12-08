@@ -14,8 +14,19 @@ import Body from "./app/components/Body";
 import Calendar from "./app/components/calendar";
 import Footer from "./app/components/Footer";
 import EventBody from "./app/components/EventBody";
+import { LogBox } from "react-native";
+LogBox.ignoreLogs(["Warning: ..."]);
+LogBox.ignoreAllLogs();
 
 import profileDetail from "./app/components/profileDetail.js";
+import profileDetail4 from "./app/components/profileDetail4.js";
+
+import profileDetail3 from "./app/components/profileDetail3.js";
+
+import profileDetail2 from "./app/components/profileDetail2.js";
+import EventDetails2 from "./app/components/EventDetails2.js";
+
+import EventDetails3 from "./app/components/EventDetails3.js";
 
 import Chat, { ChatHistory } from "./app/components/chat";
 import Board from "./app/components/board";
@@ -54,9 +65,22 @@ function HomeScreen() {
           options={{ headerShown: false }}
           screenOptions={{ headerShown: false }}
         />
+
         <Stack.Screen
           name="EventDetails"
           component={EventDetails}
+          options={{ title: "Event Details", headerShown: true }}
+        />
+
+        <Stack.Screen
+          name="EventDetails2"
+          component={EventDetails2}
+          options={{ title: "Event Details", headerShown: true }}
+        />
+
+        <Stack.Screen
+          name="EventDetails3"
+          component={EventDetails3}
           options={{ title: "Event Details", headerShown: true }}
         />
         <Stack.Screen
@@ -122,13 +146,66 @@ function ConnectScreen() {
         <Stack.Screen
           name="Connect"
           component={Connect}
-          options={{ headerShown: false }}
+          options={{
+            headerShown: true,
+
+            headerStyle: {
+              backgroundColor: PINK,
+            },
+            headerTintColor: GREEN,
+          }}
         />
 
         <Stack.Screen
           name="profileDetail"
           component={profileDetail}
-          options={{ headerShown: false }}
+          options={{
+            headerTitle: "Profile",
+            headerShown: true,
+            headerStyle: {
+              backgroundColor: PINK,
+            },
+            headerTintColor: GREEN,
+          }}
+        />
+        <Stack.Screen
+          name="profileDetail2"
+          component={profileDetail2}
+          options={{
+            headerShown: true,
+            headerTitle: "Profile",
+
+            headerStyle: {
+              backgroundColor: PINK,
+            },
+            headerTintColor: GREEN,
+          }}
+        />
+        <Stack.Screen
+          name="profileDetail3"
+          component={profileDetail3}
+          options={{
+            headerShown: true,
+            headerTitle: "Profile",
+
+            headerStyle: {
+              backgroundColor: PINK,
+            },
+            headerTintColor: GREEN,
+          }}
+        />
+        <Stack.Screen
+          name="profileDetail4"
+          component={profileDetail4}
+          options={{
+            headerShown: true,
+            headerTitle: "Profile",
+
+            headerStyle: {
+              backgroundColor: PINK,
+            },
+            headerTintColor: GREEN,
+          }}
         />
       </Stack.Navigator>
     </View>
@@ -271,6 +348,7 @@ export default function App() {
             name="Connect"
             component={ConnectScreen}
             options={{
+              headerShown: false,
               headerStyle: {
                 backgroundColor: PINK,
               },

@@ -110,7 +110,7 @@ const Post = ({ navigation }) => {
               }}
               multiline={true}
               style={{
-                height: 200,
+                height: 100,
                 width: 300,
                 borderRadius: 10,
                 backgroundColor: "lightgrey",

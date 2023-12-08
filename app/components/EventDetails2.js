@@ -47,7 +47,7 @@ import {
 import Profiles from "../../assets/Profiles";
 import Icons from "../../assets/Icons";
 import { useState } from "react";
-import allEventDetails from "../../";
+import allEventDetails from "expo/AppEntry";
 
 const { height: windowHeight, width: windowWidth } = Dimensions.get("window");
 const FIGMA_WHITE = "#F8F7F7";
@@ -55,7 +55,7 @@ const PINK = "#FBC6D0";
 const GREEN = "#387F58";
 const FUSCHIA = "#E45B74";
 
-const EventBody = ({ navigation }) => {
+const EventBody2 = ({ navigation }) => {
   const [showAlertDialog, setShowAlertDialog] = React.useState(false);
   const [showSuccess, setShowSuccess] = React.useState(false);
   const [hasRSVPed, setHasRSVPed] = React.useState(false);
@@ -67,31 +67,30 @@ const EventBody = ({ navigation }) => {
           <Image
             size="md"
             borderRadius="$none"
-            source={require("../../assets/Events/walks.png")}
+            source={require("../../assets/Events/grief.png")}
             style={styles.eventImage}
             alt="A mother walking on a trail with her family."
           />
           <View style={styles.eventSummary}>
-            <Text style={styles.eventTitle}>Moms Who Walk!</Text>
-            <Text style={styles.eventBody}>Creator: TayTay23</Text>
-            <Text style={styles.eventBody}>Date: 11/11/23 @ 2:00PM</Text>
-            <Text style={styles.eventBody}>Location: Willow Park</Text>
+            <Text style={styles.eventTitle}>Katy’s Grief Workshop</Text>
+            <Text style={styles.eventBody}>Creator: tdolkar</Text>
+            <Text style={styles.eventBody}>Date: 11/12/23 </Text>
+            <Text style={styles.eventBody}>Location: Melow Park</Text>
           </View>
         </View>
 
         <View style={styles.eventDescription}>
           <Text style={styles.eventTitle}>Description</Text>
           <Text style={styles.eventBody}>
-            Join us at beautiful Willow Park next Saturday for our Moms Who Walk
-            event, located in the heart of our vibrant community. This
-            empowering gathering is perfect for mothers of all ages and stages,
-            where you can enjoy a refreshing walk, exchange parenting tips, and
-            connect with other moms who understand the journey of motherhood.
-            We'll provide a welcoming atmosphere, complete with water stations
-            and shaded rest areas.
-            {"\n"}Whether you're a seasoned mom or a newbie, come take a step
-            towards fitness and friendship at "Moms Who Walk" – because the
-            journey of motherhood is better when shared!
+            Join us for "Katy’s Grief Workshop," a compassionate space for those
+            navigating the complexities of grief and loss. Led by experienced
+            facilitators, this workshop provides a supportive environment to
+            share, learn, and heal. 🌸 Event Highlights: Guided Discussions:
+            Engage in open conversations about grief, coping mechanisms, and the
+            journey to healing. Interactive Activities: Participate in
+            therapeutic activities designed to explore emotions and promote
+            healing. Community Support: Connect with others who understand and
+            share similar experiences in a nurturing and non-judgmental setting.
           </Text>
         </View>
         <View style={styles.buttonsBar}>
@@ -306,4 +305,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default EventBody;
+export default EventBody2;

@@ -64,7 +64,7 @@ const PINK = "#FBC6D0";
 const GREEN = "#387F58";
 const FUSCHIA = "#E45B74";
 
-const profileDetail = ({ navigation }) => {
+const profileDetail3 = ({ navigation }) => {
   const [showAlertDialog, setShowAlertDialog] = React.useState(false);
   const [showSuccess, setShowSuccess] = React.useState(false);
   const [hasRSVPed, setHasRSVPed] = React.useState(false);
@@ -76,18 +76,18 @@ const profileDetail = ({ navigation }) => {
           <Image
             size="md"
             borderRadius="$none"
-            source={require("../../assets/Profiles/ruth.jpg")}
+            source={require("../../assets/Profiles/kofi.jpg")}
             style={styles.eventImage}
             alt="A mother walking on a trail with her family."
           />
         </View>
-        <Text style={styles.name}>Ruth Ella Johnson</Text>
+        <Text style={styles.name}>Kofi Mensah</Text>
         <View style={styles.eventDescription}>
           <Text style={styles.eventBody}>
-            👩‍👦‍👶 Mom of a toddler and a newborn, embracing the beautiful chaos
-            of motherhood, one precious moment at a time. 💕 | Ruth Ella Johnson
-            | Sharing the joys and challenges of parenting. 🌼 #MomLife
-            #FamilyFirst
+            🌈 Proud Dad | 🏳️‍🌈 Embracing Parenthood | 💖 Love is Love | ✨ Making
+            Memories | #GayDadLife Hey, it's Kofi Mensah! 👋 Living my best life
+            as a proud gay dad. 🌟 Join me in celebrating love, family, and the
+            beautiful journey of parenthood.
           </Text>
         </View>
 
@@ -238,4 +238,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default profileDetail;
+export default profileDetail3;

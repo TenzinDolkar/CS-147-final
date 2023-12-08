@@ -15,6 +15,7 @@ import {
   ButtonIcon,
   EditIcon,
 } from "@gluestack-ui/themed";
+
 import {
   Select,
   SelectTrigger,
@@ -32,6 +33,7 @@ import {
 } from "@gluestack-ui/themed";
 // import { GluestackUIProvider, Button, ButtonText } from "@gluestack-ui/themed";
 import { config } from "@gluestack-ui/config";
+
 import {
   View,
   Text,
@@ -145,7 +147,7 @@ const Board = ({ navigation }) => {
                 setValue(e.nativeEvent.text);
               }}
               value={value}
-              placeholder="Search all events..."
+              placeholder="Search all posts..."
             />
           </Input>
         </View>

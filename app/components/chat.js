@@ -73,7 +73,7 @@ export default function Chat({ navigation }) {
   );
 }
 
-let messages = [{ message: "Hello", sender: "me" }];
+let messages = [];
 
 export function ChatHistory({ navigation }) {
   [messages, setMessages] = useState(messages);
@@ -137,6 +137,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 24,
     borderColor: "black",
+    backgroundColor: "white",
   },
   main: {
     flex: 1,
